@@ -1,0 +1,20 @@
+:root {
+  --background: #050505;
+  --foreground: #ffffff;
+
+  --muted: #a1a1aa;
+
+  --border: rgba(255, 255, 255, 0.1);
+
+  --surface: rgba(255, 255, 255, 0.05);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+
+  --container-width: 1280px;
+
+  --transition-fast: 300ms;
+  --transition-normal: 500ms;
+}

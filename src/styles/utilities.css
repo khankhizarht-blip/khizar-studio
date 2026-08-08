@@ -1,0 +1,9 @@
+.container-custom {
+  width: min(100% - 3rem, var(--container-width));
+  margin-inline: auto;
+}
+
+
+.text-balance {
+  text-wrap: balance;
+}
