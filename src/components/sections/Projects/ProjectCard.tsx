@@ -27,30 +27,21 @@ export default function ProjectCard({
         initial="initial"
         whileHover="hover"
         className="
-          group
-          grid
-          overflow-hidden
-          rounded-3xl
-          border
-          border-white/10
-          bg-white/[0.03]
-          backdrop-blur-xl
-          transition-colors
-          duration-500
+          group grid grid-cols-1 overflow-hidden
+          rounded-3xl border border-white/10
+          bg-white/[0.03] backdrop-blur-xl
+          transition-colors duration-500
           hover:border-white/20
+          lg:grid-cols-[1.05fr_0.95fr]
         "
       >
         <Link
           href={caseStudyHref}
           aria-label={`View ${project.title} case study`}
           className="
-            relative
-            block
-            aspect-[16/10]
-            overflow-hidden
-            bg-neutral-900
-            lg:aspect-auto
-            lg:min-h-[460px]
+            relative block aspect-[16/10]
+            overflow-hidden bg-neutral-900
+            lg:aspect-auto lg:min-h-[400px]
           "
         >
           <motion.div
@@ -69,7 +60,7 @@ export default function ProjectCard({
               alt={project.alt}
               fill
               priority={index === 0}
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="(max-width: 1023px) 100vw, (max-width: 1600px) 78vw, 1040px"
               className="object-cover"
             />
           </motion.div>
@@ -87,7 +78,7 @@ export default function ProjectCard({
           </div>
         </Link>
 
-        <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-12">
+        <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-8 xl:p-10">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-neutral-500 sm:text-sm">
             {project.client && <span>{project.client}</span>}
             {project.year && <span>{project.year}</span>}
@@ -100,35 +91,27 @@ export default function ProjectCard({
           </div>
 
           <Link href={caseStudyHref} className="w-fit">
-            <h3 className="mt-6 text-3xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-neutral-300 sm:mt-8 sm:text-4xl">
+            <h3 className="mt-5 text-3xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-neutral-300 sm:text-4xl">
               {project.title}
             </h3>
           </Link>
 
-          <p className="mt-4 leading-relaxed text-neutral-400 sm:mt-5">
+          <p className="mt-4 leading-relaxed text-neutral-400">
             {project.description}
           </p>
 
-          <div className="mt-6 sm:mt-8">
+          <div className="mt-6">
             <ProjectTech technologies={project.technologies} />
           </div>
 
-          <div className="mt-8 sm:mt-10">
+          <div className="mt-7">
             <Link
               href={caseStudyHref}
               className="
-                inline-flex
-                items-center
-                gap-2
-                rounded-full
-                bg-white
-                px-6
-                py-3
-                text-sm
-                font-medium
-                text-black
-                transition-colors
-                duration-300
+                inline-flex items-center gap-2
+                rounded-full bg-white px-6 py-3
+                text-sm font-medium text-black
+                transition-colors duration-300
                 hover:bg-neutral-200
                 focus-visible:outline
                 focus-visible:outline-2
