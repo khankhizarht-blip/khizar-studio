@@ -1,6 +1,7 @@
+
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { ReactNode } from "react";
 
 interface SlideUpProps {
@@ -14,19 +15,25 @@ export default function SlideUp({
   delay = 0,
   className,
 }: SlideUpProps) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-        y: 40,
-      }}
+      initial={
+        reduceMotion
+          ? false
+          : {
+              opacity: 0,
+              y: 40,
+            }
+      }
       animate={{
         opacity: 1,
         y: 0,
       }}
       transition={{
-        duration: 0.8,
-        delay,
+        duration: reduceMotion ? 0 : 0.8,
+        delay: reduceMotion ? 0 : delay,
         ease: "easeOut",
       }}
       className={className}
