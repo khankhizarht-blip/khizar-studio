@@ -1,12 +1,9 @@
-import {
-  ReactNode,
-} from "react";
 
+import type { ReactNode } from "react";
 
 interface BrowserViewportProps {
   children: ReactNode;
 }
-
 
 export default function BrowserViewport({
   children,
@@ -14,20 +11,9 @@ export default function BrowserViewport({
   return (
     <div
       aria-hidden="true"
-      className="
-        relative
-        overflow-hidden
-        bg-neutral-950
-      "
+      className="relative w-full overflow-hidden bg-neutral-950"
     >
-      <div
-        className="
-          relative
-          min-h-[420px]
-          w-full
-          overflow-hidden
-        "
-      >
+      <div className="relative min-h-[420px] w-full overflow-hidden">
         {children}
       </div>
     </div>

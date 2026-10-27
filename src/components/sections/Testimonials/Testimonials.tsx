@@ -1,3 +1,4 @@
+
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 
@@ -6,35 +7,38 @@ import TestimonialCard from "./TestimonialCard";
 
 export default function Testimonials() {
   return (
-    <Section>
+    <Section className="py-24 sm:py-28 lg:py-32">
       <Container>
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <p className="text-sm uppercase tracking-[0.3em] text-zinc-500">
-            Testimonials
+            Client Perspectives
           </p>
 
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            Trusted by businesses
-            <span className="block">
-              that value quality.
+          <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-white sm:mt-6 sm:text-5xl lg:text-6xl">
+            Good work builds trust.
+            <span className="block text-zinc-500">
+              Great experiences keep it.
             </span>
           </h2>
 
-          <p className="mt-5 text-zinc-400">
-            Real feedback from projects focused on design,
-            performance, and results.
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+            A successful website is about more than its appearance.
+            Clear communication, thoughtful execution, and attention
+            to detail matter throughout the entire project.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard
-              key={testimonial.id}
-              testimonial={testimonial}
-              index={index}
-            />
-          ))}
-        </div>
+        {testimonials.length > 0 && (
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:mt-16">
+            {testimonials.map((testimonial, index) => (
+              <TestimonialCard
+                key={testimonial.id}
+                testimonial={testimonial}
+                index={index}
+              />
+            ))}
+          </div>
+        )}
       </Container>
     </Section>
   );

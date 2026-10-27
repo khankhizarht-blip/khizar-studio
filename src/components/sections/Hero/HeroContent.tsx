@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "motion/react";
@@ -18,7 +19,6 @@ export default function HeroContent() {
         ease: "easeOut",
       }}
     >
-      {/* Badge */}
       <div
         className="
           mx-auto
@@ -37,11 +37,9 @@ export default function HeroContent() {
           backdrop-blur-xl
         "
       >
-        Khizar Studio
+        Independent Digital Studio
       </div>
 
-
-      {/* Heading */}
       <h1
         className="
           mt-8
@@ -54,7 +52,7 @@ export default function HeroContent() {
           lg:text-7xl
         "
       >
-        Building digital
+        Websites built
         <br />
 
         <span
@@ -67,16 +65,14 @@ export default function HeroContent() {
             text-transparent
           "
         >
-          experiences
+          to move business
         </span>
 
         <br />
 
-        that grow businesses.
+        forward.
       </h1>
 
-
-      {/* Description */}
       <p
         className="
           mx-auto
@@ -88,11 +84,12 @@ export default function HeroContent() {
           sm:text-lg
         "
       >
-        I design and develop premium websites using modern
-        technologies, combining exceptional performance,
-        beautiful interfaces, and smooth interactions.
+        I design and develop premium websites that help
+        businesses earn trust, stand out from competitors,
+        and turn more visitors into potential customers.
+        Every detail is built around performance, clarity,
+        and a better user experience.
       </p>
-
     </motion.div>
   );
 }

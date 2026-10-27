@@ -1,21 +1,19 @@
+
 export const stats = [
   {
-    label: "Projects Built",
-    value: "10+",
+    label: "Design Approach",
+    value: "Purposeful",
   },
-
   {
-    label: "Technologies",
-    value: "15+",
+    label: "User Experience",
+    value: "Intuitive",
   },
-
   {
-    label: "Performance Focus",
-    value: "100%",
+    label: "Performance",
+    value: "Optimized",
   },
-
   {
-    label: "Client Experience",
-    value: "Premium",
+    label: "Every Screen",
+    value: "Responsive",
   },
 ];

@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -31,28 +32,16 @@ export default function HeroActions() {
         sm:flex-row
       "
     >
-
-      {/* Primary CTA */}
-      <Link href="#contact">
+      <Link href="/#contact">
         <Button size="lg">
           <Sparkles className="mr-2 h-5 w-5" />
-
-          Start a Project
-
-          <ArrowRight
-            className="
-              ml-2
-              h-5
-              w-5
-            "
-          />
+          Let&apos;s Talk About Your Project
+          <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
       </Link>
 
-
-      {/* Secondary CTA */}
       <Link
-        href="#projects"
+        href="/#projects"
         className="
           inline-flex
           h-12
@@ -67,14 +56,14 @@ export default function HeroActions() {
           font-medium
           text-zinc-300
           transition
+          duration-300
           hover:border-white/20
           hover:bg-white/[0.08]
           hover:text-white
         "
       >
-        View Projects
+        Explore Our Work
       </Link>
-
     </motion.div>
   );
 }

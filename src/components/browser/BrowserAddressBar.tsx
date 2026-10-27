@@ -1,30 +1,26 @@
-import {
-  Lock,
-} from "lucide-react";
 
+import { Lock } from "lucide-react";
 
 interface BrowserAddressBarProps {
   url: string;
 }
 
-
 export default function BrowserAddressBar({
   url,
 }: BrowserAddressBarProps) {
+  const displayUrl = url
+    .replace(/^https?:\/\//, "")
+    .replace(/^www\./, "");
+
   return (
     <div
       aria-hidden="true"
-      className="
-        flex
-        items-center
-        gap-3
-        px-4
-        pb-3
-      "
+      className="flex items-center gap-3 px-4 pb-3"
     >
       <div
         className="
           flex
+          min-w-0
           flex-1
           items-center
           gap-2
@@ -36,22 +32,10 @@ export default function BrowserAddressBar({
           py-2
         "
       >
-        <Lock
-          className="
-            h-3.5
-            w-3.5
-            text-zinc-500
-          "
-        />
+        <Lock className="h-3.5 w-3.5 shrink-0 text-zinc-500" />
 
-        <span
-          className="
-            truncate
-            text-xs
-            text-zinc-400
-          "
-        >
-          https://www.{url}
+        <span className="truncate text-xs text-zinc-400">
+          https://www.{displayUrl}
         </span>
       </div>
     </div>

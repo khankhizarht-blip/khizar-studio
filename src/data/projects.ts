@@ -1,106 +1,66 @@
+
 import type { Project } from "@/types/project";
 
 export const projects: Project[] = [
   {
     id: "summit-construction",
-
     title: "Summit Construction",
-
     description:
-      "A premium commercial construction website designed to build trust, showcase projects, and generate qualified leads.",
-
-    category:
-      "Commercial Construction",
-
-    image:
-      "/images/projects/summit-construction.webp",
-
+      "A commercial construction website concept designed to communicate expertise, showcase project capabilities, and encourage quote requests.",
+    category: "Commercial Construction",
+    image: "/images/projects/summit-construction.webp",
     technologies: [
       "Next.js",
       "TypeScript",
       "Tailwind CSS",
       "GSAP",
     ],
-
     featured: true,
-
-    client:
-      "Summit Construction",
-
-    year:
-      "2026",
-
-    status:
-      "Completed",
-
-    alt:
-      "Summit Construction commercial website showcase",
-
+    client: "Summit Construction",
+    year: "2026",
+    status: "Completed",
+    alt: "Summit Construction commercial construction website concept",
     challenge:
-      "The company needed a modern digital presence that could communicate reliability, showcase completed projects, and convert visitors into qualified enquiries.",
-
+      "Construction companies need to establish credibility quickly. The website concept needed to present services clearly, demonstrate project experience, and make it easy for prospective clients to request a quote.",
     solution:
-      "We created a premium construction website focused on strong visual storytelling, clear service presentation, and conversion-focused user experience.",
-
+      "We developed a professional, responsive website concept with strong visual hierarchy, dedicated project presentation, clear service messaging, and prominent enquiry calls to action.",
     results: [
-      "Professional brand positioning",
-      "Improved project presentation",
-      "Better user engagement",
-      "Lead-focused website structure",
+      "Clearer presentation of construction services",
+      "Dedicated space to showcase project experience",
+      "Responsive layouts for desktop and mobile",
+      "Prominent pathways for quote enquiries",
     ],
-
     gallery: [
       "/images/projects/summit-construction.webp",
     ],
   },
-
   {
     id: "creative-agency",
-
-    title:
-      "Creative Agency",
-
+    title: "Creative Agency",
     description:
-      "A modern agency website focused on immersive interactions and strong visual storytelling.",
-
-    category:
-      "Agency",
-
-    image:
-      "/images/projects/creative-agency.webp",
-
+      "A contemporary creative agency website concept combining expressive visuals, refined motion, and a clear presentation of services.",
+    category: "Creative Agency",
+    image: "/images/projects/creative-agency.webp",
     technologies: [
       "Next.js",
       "Motion",
       "Lenis",
     ],
-
     featured: true,
-
-    client:
-      "Creative Agency",
-
-    year:
-      "2026",
-
-    status:
-      "Completed",
-
-    alt:
-      "Creative agency modern website showcase",
-
+    client: "Creative Agency",
+    year: "2026",
+    status: "Completed",
+    alt: "Creative agency website concept featuring modern visual design",
     challenge:
-      "The agency needed a digital experience that reflected creativity while maintaining speed and usability.",
-
+      "The agency needed a distinctive online presence that could communicate its creative approach while keeping navigation intuitive and the browsing experience smooth.",
     solution:
-      "We designed an interactive website using modern animations, smooth transitions, and a strong visual hierarchy.",
-
+      "We created a visually focused website concept with considered typography, a clear content hierarchy, responsive layouts, and motion designed to support the experience rather than distract from it.",
     results: [
-      "Premium brand presentation",
-      "Smooth interactive experience",
-      "Modern responsive design",
+      "Distinctive creative brand presentation",
+      "Clearer service and portfolio storytelling",
+      "Responsive experience across screen sizes",
+      "Purposeful motion and transitions",
     ],
-
     gallery: [
       "/images/projects/creative-agency.webp",
     ],

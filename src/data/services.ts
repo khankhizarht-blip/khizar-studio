@@ -1,54 +1,41 @@
+
 import type { Service } from "@/types/service";
 
 export const services: Service[] = [
   {
     id: "web-development",
-
-    title: "Web Development",
-
+    title: "Website Development",
     description:
-      "High-performance websites built with modern frontend technologies.",
-
+      "Fast, responsive business websites designed to build credibility, communicate your value, and turn visitors into enquiries.",
     icon: "Code",
-
     features: [
-      "Next.js Applications",
-      "Responsive Design",
-      "Performance Optimization",
+      "Business & Service Websites",
+      "Responsive Development",
+      "Speed & Performance Optimization",
     ],
   },
-
   {
     id: "creative-design",
-
-    title: "Creative Design",
-
+    title: "UI/UX & Creative Design",
     description:
-      "Modern interfaces combining premium aesthetics with excellent usability.",
-
+      "Thoughtful layouts and refined visual design that make your business look professional and help customers find what they need.",
     icon: "Palette",
-
     features: [
-      "UI/UX Design",
-      "Design Systems",
-      "Interactive Experiences",
+      "User-Focused Interface Design",
+      "Visual Design Systems",
+      "Clear Website Navigation",
     ],
   },
-
   {
     id: "animation",
-
-    title: "Motion & Animation",
-
+    title: "Motion & Interactions",
     description:
-      "Smooth interactions and animations that create memorable experiences.",
-
+      "Purposeful animations and polished interactions that bring your website to life without sacrificing usability or speed.",
     icon: "Sparkles",
-
     features: [
-      "GSAP Animations",
-      "Scroll Effects",
-      "Micro Interactions",
+      "Scroll-Based Animations",
+      "Interactive UI Elements",
+      "Smooth Transitions & Effects",
     ],
   },
 ];

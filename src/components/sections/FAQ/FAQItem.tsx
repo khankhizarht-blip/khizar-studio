@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 import Reveal from "@/components/animations/Reveal";
@@ -15,91 +16,105 @@ export default function FAQItem({
   answer,
 }: FAQItemProps) {
   const [open, setOpen] = useState(false);
+  const answerId = useId();
 
   return (
     <Reveal>
       <div
         className="
+          group
           overflow-hidden
           rounded-2xl
           border
           border-white/10
           bg-white/[0.03]
+          transition-colors
+          duration-300
+          hover:border-white/20
+          hover:bg-white/[0.04]
         "
       >
-
         <button
-          onClick={() => setOpen(!open)}
+          type="button"
+          id={`${answerId}-trigger`}
+          aria-expanded={open}
+          aria-controls={answerId}
+          onClick={() => setOpen((current) => !current)}
           className="
             flex
             w-full
             items-center
             justify-between
-            px-6
+            gap-5
+            px-5
             py-5
             text-left
+            focus-visible:outline
+            focus-visible:outline-2
+            focus-visible:outline-inset
+            focus-visible:outline-white/70
+            sm:px-6
+            sm:py-6
           "
         >
-          <span
-            className="
-              text-base
-              font-medium
-              text-white
-            "
-          >
+          <span className="text-sm font-medium leading-relaxed text-white sm:text-base">
             {question}
           </span>
 
-
-          <ChevronDown
+          <span
             className={`
-              h-5
-              w-5
+              flex
+              h-8
+              w-8
+              shrink-0
+              items-center
+              justify-center
+              rounded-full
+              border
+              border-white/10
               text-zinc-400
-              transition-transform
+              transition-colors
               duration-300
-              ${
-                open
-                  ? "rotate-180"
-                  : ""
-              }
+              group-hover:text-white
+              ${open ? "bg-white/[0.08] text-white" : ""}
             `}
-          />
-
+          >
+            <ChevronDown
+              aria-hidden="true"
+              className={`
+                h-4
+                w-4
+                transition-transform
+                duration-300
+                ${open ? "rotate-180" : ""}
+              `}
+            />
+          </span>
         </button>
 
-
         <div
+          id={answerId}
+          role="region"
+          aria-labelledby={`${answerId}-trigger`}
+          aria-hidden={!open}
           className={`
             grid
-            transition-all
+            transition-[grid-template-rows,opacity]
             duration-300
+            ease-out
             ${
               open
-                ? "grid-rows-[1fr]"
-                : "grid-rows-[0fr]"
+                ? "grid-rows-[1fr] opacity-100"
+                : "grid-rows-[0fr] opacity-0"
             }
           `}
         >
-
           <div className="overflow-hidden">
-
-            <p
-              className="
-                px-6
-                pb-6
-                text-sm
-                leading-relaxed
-                text-zinc-400
-              "
-            >
+            <p className="px-5 pb-5 text-sm leading-7 text-zinc-400 sm:px-6 sm:pb-6">
               {answer}
             </p>
-
           </div>
-
         </div>
-
       </div>
     </Reveal>
   );
