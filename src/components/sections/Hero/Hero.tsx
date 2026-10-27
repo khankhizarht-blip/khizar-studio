@@ -1,3 +1,4 @@
+
 "use client";
 
 import Container from "@/components/ui/Container";
@@ -13,10 +14,9 @@ import BrowserShowcase from "./BrowserShowcase";
 export default function Hero() {
   return (
     <Section className="relative overflow-hidden">
-      {/* Hero Background Glow */}
-
       <Parallax offset={80}>
         <div
+          aria-hidden="true"
           className="
             pointer-events-none
             absolute
@@ -32,15 +32,24 @@ export default function Hero() {
         />
       </Parallax>
 
-      <Container>
-        <div
-          className="
-            mx-auto
-            max-w-6xl
-          "
-        >
-          {/* Hero Copy */}
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-x-0
+          bottom-0
+          z-10
+          h-40
+          bg-gradient-to-b
+          from-transparent
+          via-neutral-950/40
+          to-neutral-950
+        "
+      />
 
+      <Container>
+        <div className="relative z-0 mx-auto max-w-6xl">
           <div className="mx-auto max-w-4xl text-center">
             <HeroContent />
 
@@ -48,8 +57,6 @@ export default function Hero() {
 
             <HeroStats />
           </div>
-
-          {/* Browser Showcase */}
 
           <Parallax offset={40}>
             <div className="mt-20 lg:mt-24">
