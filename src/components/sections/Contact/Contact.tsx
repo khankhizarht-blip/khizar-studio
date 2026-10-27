@@ -38,7 +38,7 @@ export default function Contact() {
 
             <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:mt-10 sm:flex-row">
               <a
-                href="mailto:khankhizar@gmail.com?subject=Website%20Project%20Enquiry"
+                href="mailto:khankhizarht@gmail.com?subject=Website%20Project%20Enquiry"
                 className="
                   inline-flex
                   min-h-12
@@ -107,4 +107,5 @@ export default function Contact() {
     </Section>
   );
 }
+
 

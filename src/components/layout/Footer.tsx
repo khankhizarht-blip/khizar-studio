@@ -63,7 +63,7 @@ export default function Footer() {
             </p>
 
             <a
-              href="mailto:khankhizar@gmail.com?subject=Website%20Project%20Enquiry"
+              href="mailto:khankhizarht@gmail.com?subject=Website%20Project%20Enquiry"
               className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white transition-colors hover:text-zinc-300"
             >
               Get in touch
@@ -88,4 +88,5 @@ export default function Footer() {
     </footer>
   );
 }
+
 
