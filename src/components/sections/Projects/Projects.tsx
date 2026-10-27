@@ -10,6 +10,8 @@ import useGSAP from "@/hooks/useGSAP";
 
 export default function Projects() {
   const pinRef = useRef<HTMLDivElement>(null);
+  const introRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
@@ -25,16 +27,51 @@ export default function Projects() {
   useGSAP(
     () => {
       const pin = pinRef.current;
+      const intro = introRef.current;
+      const gallery = galleryRef.current;
       const viewport = viewportRef.current;
       const track = trackRef.current;
       const progress = progressRef.current;
       const counter = counterRef.current;
 
-      if (!pin || !viewport || !track || !progress || !counter) {
+      if (
+        !pin ||
+        !intro ||
+        !gallery ||
+        !viewport ||
+        !track ||
+        !progress ||
+        !counter
+      ) {
         return;
       }
 
       const media = gsap.matchMedia();
+
+      media.add(
+        "(prefers-reduced-motion: no-preference)",
+        () => {
+          gsap.fromTo(
+            [intro, gallery],
+            {
+              autoAlpha: 0,
+              y: 24,
+            },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.85,
+              ease: "power3.out",
+              stagger: 0.12,
+              scrollTrigger: {
+                trigger: pin,
+                start: "top 75%",
+                once: true,
+              },
+            }
+          );
+        }
+      );
 
       media.add(
         "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
@@ -104,7 +141,10 @@ export default function Projects() {
           lg:overflow-hidden lg:py-12
         "
       >
-        <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <div
+          ref={introRef}
+          className="mx-auto w-full max-w-7xl px-6 lg:px-8"
+        >
           <div className="max-w-3xl">
             <span className="text-sm uppercase tracking-[0.35em] text-neutral-500">
               Selected Work
@@ -125,7 +165,10 @@ export default function Projects() {
           </div>
         </div>
 
-        <div className="mt-10 w-full sm:mt-12 lg:mt-8">
+        <div
+          ref={galleryRef}
+          className="mt-10 w-full sm:mt-12 lg:mt-8"
+        >
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div
               ref={viewportRef}
