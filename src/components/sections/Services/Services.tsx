@@ -1,16 +1,84 @@
 
+"use client";
+
+import { useRef } from "react";
+
+import { gsap } from "@/lib/gsap";
+import useGSAP from "@/hooks/useGSAP";
+
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 
 import { services } from "@/data/services";
-
 import ServiceCard from "./ServiceCard";
 
 export default function Services() {
+  const headingRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const heading = headingRef.current;
+      const cards = cardsRef.current;
+
+      if (!heading || !cards) return;
+
+      const media = gsap.matchMedia();
+
+      media.add(
+        "(prefers-reduced-motion: no-preference)",
+        () => {
+          gsap.fromTo(
+            heading.children,
+            {
+              autoAlpha: 0,
+              y: 22,
+            },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.75,
+              stagger: 0.1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: heading,
+                start: "top 82%",
+                once: true,
+              },
+            }
+          );
+
+          gsap.fromTo(
+            cards.children,
+            {
+              autoAlpha: 0,
+              y: 28,
+            },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.8,
+              stagger: 0.14,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: cards,
+                start: "top 85%",
+                once: true,
+              },
+            }
+          );
+        }
+      );
+
+      return () => media.revert();
+    },
+    headingRef
+  );
+
   return (
     <Section id="services" className="py-32">
       <Container>
-        <div className="max-w-2xl">
+        <div ref={headingRef} className="max-w-2xl">
           <p className="text-sm uppercase tracking-[0.3em] text-zinc-500">
             What We Do
           </p>
@@ -28,7 +96,10 @@ export default function Services() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div
+          ref={cardsRef}
+          className="mt-12 grid gap-6 md:grid-cols-3"
+        >
           {services.map((service, index) => (
             <ServiceCard
               key={service.id}
