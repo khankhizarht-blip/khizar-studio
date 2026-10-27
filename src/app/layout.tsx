@@ -1,11 +1,14 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
 
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import { LoadingScreen } from "@/components/layout";
 
+const siteUrl = "https://khizar-studio.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://khizarstudio.com"),
+  metadataBase: new URL(siteUrl),
 
   title: {
     default: "Khizar Studio | Premium Web Experiences",
@@ -13,27 +16,25 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Khizar Studio creates premium, high-performance websites for businesses using Next.js, TypeScript, modern UI design, and advanced interactions.",
+    "Khizar Studio creates premium, high-performance websites for businesses, combining modern web development, thoughtful UI/UX design, and engaging digital experiences.",
+
+  alternates: {
+    canonical: "/",
+  },
 
   keywords: [
     "Khizar Studio",
-    "Next.js Developer",
-    "Frontend Developer",
-    "React Developer",
     "Premium Website Development",
     "Business Website Design",
-    "UI UX Development",
+    "Next.js Development",
+    "React Development",
+    "Frontend Development",
+    "UI UX Design",
     "Modern Web Development",
   ],
 
-  authors: [
-    {
-      name: "Khizar Studio",
-    },
-  ],
-
+  authors: [{ name: "Khizar Studio" }],
   creator: "Khizar Studio",
-
   publisher: "Khizar Studio",
 
   icons: {
@@ -54,28 +55,19 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
+    url: siteUrl,
     siteName: "Khizar Studio",
     title: "Khizar Studio | Premium Web Experiences",
     description:
-      "Premium business websites built with modern technology, exceptional design, and smooth user experiences.",
+      "Premium business websites built with modern technology, thoughtful design, and engaging user experiences.",
     locale: "en_US",
-    images: [
-      {
-        url: "/icon.png",
-        width: 512,
-        height: 512,
-        alt: "Khizar Studio",
-      },
-    ],
   },
 
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Khizar Studio | Premium Web Experiences",
     description:
-      "Premium websites built with Next.js, modern UI systems, and high-performance animations.",
-    creator: "@KhizarStudio",
-    images: ["/icon.png"],
+      "Premium websites built with modern development, thoughtful UI design, and engaging interactions.",
   },
 };
 
