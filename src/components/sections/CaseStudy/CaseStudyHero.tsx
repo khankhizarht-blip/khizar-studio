@@ -19,7 +19,7 @@ export default function CaseStudyHero({
         <Reveal>
           <div className="max-w-4xl">
             <span className="text-sm uppercase tracking-[var(--text-eyebrow-tracking)] text-[var(--color-text-muted)]">
-              {project.category}
+              {project.category} · Independent portfolio concept
             </span>
 
             <h1 className="mt-6 text-5xl font-semibold leading-tight tracking-tight text-[var(--color-text-primary)] sm:text-7xl">
@@ -28,6 +28,10 @@ export default function CaseStudyHero({
 
             <p className="mt-8 max-w-3xl text-xl leading-relaxed text-[var(--color-text-secondary)]">
               {project.description}
+            </p>
+
+            <p className="mt-6 max-w-3xl text-sm leading-relaxed text-[var(--color-text-muted)]">
+              This is a self-initiated design and development concept, not a commissioned client project.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-8 text-sm text-[var(--color-text-secondary)]">

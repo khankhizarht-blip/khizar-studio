@@ -16,9 +16,9 @@ export const projects: Project[] = [
       "GSAP",
     ],
     featured: true,
-    client: "Summit Construction",
+    
     year: "2026",
-    status: "Completed",
+    
     alt: "Summit Construction commercial construction website concept",
     challenge:
       "Construction companies need to establish credibility quickly. The website concept needed to present services clearly, demonstrate project experience, and make it easy for prospective clients to request a quote.",
@@ -47,9 +47,9 @@ export const projects: Project[] = [
       "Lenis",
     ],
     featured: true,
-    client: "Creative Agency",
+    
     year: "2026",
-    status: "Completed",
+    
     alt: "Creative agency website concept featuring modern visual design",
     challenge:
       "The agency needed a distinctive online presence that could communicate its creative approach while keeping navigation intuitive and the browsing experience smooth.",

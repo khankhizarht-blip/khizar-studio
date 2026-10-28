@@ -15,11 +15,11 @@ export default function CaseStudyResults({
       <Reveal>
         <div>
           <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-text-muted)]">
-            The Results
+            Design Outcomes
           </p>
 
           <h2 className="mt-5 text-3xl font-semibold tracking-tight text-[var(--color-text-primary)]">
-            What we achieved
+            What the concept demonstrates
           </h2>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
