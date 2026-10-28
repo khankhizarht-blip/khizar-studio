@@ -1,12 +1,24 @@
 
 import type { Metadata } from "next";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 
 import { EntranceProvider } from "@/components/providers/EntranceProvider";
 import { siteConfig } from "@/config/site";
-
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import { LoadingScreen } from "@/components/layout";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
+  display: "swap",
+});
 
 const siteUrl = siteConfig.url;
 
@@ -81,7 +93,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body>
+      <body className={`${inter.variable} ${manrope.variable}`}>
         <EntranceProvider>
           <LoadingScreen />
           <SmoothScroll>{children}</SmoothScroll>

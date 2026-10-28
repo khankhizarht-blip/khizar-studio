@@ -1,23 +1,17 @@
+
 export default function Grid() {
   return (
     <div
-      aria-hidden="true"
-      className="
-        pointer-events-none
-        fixed
-        inset-0
-        z-[-2]
-        opacity-20
-      "
-    >
-      <div
-        className="
-          absolute
-          inset-0
-          bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]
-          bg-[size:80px_80px]
-        "
-      />
-    </div>
+      className="absolute inset-x-0 top-0 h-[1100px] opacity-30"
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(174, 183, 194, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(174, 183, 194, 0.055) 1px, transparent 1px)",
+        backgroundSize: "88px 88px",
+        maskImage:
+          "linear-gradient(to bottom, transparent 0%, black 18%, black 48%, transparent 100%)",
+        WebkitMaskImage:
+          "linear-gradient(to bottom, transparent 0%, black 18%, black 48%, transparent 100%)",
+      }}
+    />
   );
 }

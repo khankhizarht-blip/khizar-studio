@@ -1,11 +1,13 @@
 
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import type { FocusEvent } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import ProjectCard from "./ProjectCard";
 import { projects } from "@/data/projects";
-import { gsap } from "@/lib/gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import useGSAP from "@/hooks/useGSAP";
 
 export default function Projects() {
@@ -16,6 +18,8 @@ export default function Projects() {
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLSpanElement>(null);
+  const desktopTriggerRef = useRef<ScrollTrigger | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const featuredProjects = projects.filter(
     (project) => project.featured
@@ -23,6 +27,31 @@ export default function Projects() {
 
   const totalProjects = featuredProjects.length;
   const formattedTotal = String(totalProjects).padStart(2, "0");
+
+  const goToProject = (index: number) => {
+    const trigger = desktopTriggerRef.current;
+    if (!trigger || totalProjects < 2) return;
+
+    const safeIndex = Math.max(0, Math.min(totalProjects - 1, index));
+    const progress = safeIndex / (totalProjects - 1);
+    const scrollY = trigger.start + progress * (trigger.end - trigger.start);
+
+    window.scrollTo({ top: scrollY, behavior: "smooth" });
+  };
+
+  const handleProjectFocus = (event: FocusEvent<HTMLDivElement>) => {
+    if (window.innerWidth < 1024) return;
+
+    const card = (event.target as HTMLElement).closest<HTMLElement>(
+      "[data-project-index]"
+    );
+    if (!card) return;
+
+    const index = Number(card.dataset.projectIndex);
+    if (Number.isInteger(index) && index !== activeIndex) {
+      goToProject(index);
+    }
+  };
 
   useGSAP(
     () => {
@@ -94,12 +123,13 @@ export default function Projects() {
 
             counter.textContent =
               `${String(activeProject).padStart(2, "0")} / ${formattedTotal}`;
+            setActiveIndex(Math.max(0, activeProject - 1));
           };
 
           gsap.set(track, { x: 0 });
           updateIndicators(0);
 
-          gsap.to(track, {
+          const tween = gsap.to(track, {
             x: () => -getDistance(),
             ease: "none",
             scrollTrigger: {
@@ -118,10 +148,18 @@ export default function Projects() {
               },
             },
           });
+
+          desktopTriggerRef.current = tween.scrollTrigger ?? null;
+          return () => {
+            desktopTriggerRef.current = null;
+          };
         }
       );
 
-      return () => media.revert();
+      return () => {
+        desktopTriggerRef.current = null;
+        media.revert();
+      };
     },
     pinRef,
     [totalProjects]
@@ -175,6 +213,7 @@ export default function Projects() {
             >
               <div
                 ref={trackRef}
+                onFocusCapture={handleProjectFocus}
                 className="
                   flex flex-col gap-6
                   lg:w-max lg:flex-row lg:gap-8
@@ -183,6 +222,7 @@ export default function Projects() {
                 {featuredProjects.map((project, index) => (
                   <div
                     key={project.id}
+                    data-project-index={index}
                     className="
                       w-full
                       lg:w-[78vw] lg:max-w-[1040px]
@@ -217,9 +257,33 @@ export default function Projects() {
                 ref={counterRef}
                 aria-label="Current project and total projects"
                 className="shrink-0 text-xs tabular-nums text-[var(--color-text-muted)]"
+                aria-live="off"
               >
                 01 / {formattedTotal}
               </span>
+
+              {totalProjects > 1 && (
+                <div className="flex shrink-0 gap-2" aria-label="Project navigation">
+                  <button
+                    type="button"
+                    onClick={() => goToProject(activeIndex - 1)}
+                    disabled={activeIndex === 0}
+                    aria-label="Previous project"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border-strong)] text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-background-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-35"
+                  >
+                    <ArrowLeft size={18} aria-hidden="true" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => goToProject(activeIndex + 1)}
+                    disabled={activeIndex === totalProjects - 1}
+                    aria-label="Next project"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border-strong)] text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-background-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-35"
+                  >
+                    <ArrowRight size={18} aria-hidden="true" />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

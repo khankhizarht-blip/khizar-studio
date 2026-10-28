@@ -1,13 +1,34 @@
+
 "use client";
 
-import { createContext, useContext, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  type ReactNode,
+} from "react";
 
-const EntranceContext = createContext({ ready: false, finish: () => {} });
+interface EntranceContextValue {
+  ready: boolean;
+  finish: () => void;
+}
 
-export function EntranceProvider({ children }: { children: ReactNode }) {
-  const [ready, setReady] = useState(false);
+const EntranceContext = createContext<EntranceContextValue>({
+  ready: true,
+  finish: () => {},
+});
+
+export function EntranceProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   return (
-    <EntranceContext.Provider value={{ ready, finish: () => setReady(true) }}>
+    <EntranceContext.Provider
+      value={{
+        ready: true,
+        finish: () => {},
+      }}
+    >
       {children}
     </EntranceContext.Provider>
   );

@@ -1,8 +1,9 @@
-import HashScroll from "@/components/navigation/HashScroll";
+
 import { Background } from "@/components/background";
 import { Footer, Navbar } from "@/components/layout";
-import { About } from "@/components/sections";
+
 import {
+  About,
   Contact,
   FAQ,
   Hero,
@@ -12,32 +13,36 @@ import {
   Testimonials,
 } from "@/components/sections";
 
+import ScrollStory from "@/components/sections/ScrollStory/ScrollStory";
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white">
-      <HashScroll />
+    <main className="relative isolate min-h-screen overflow-x-clip bg-[var(--color-background)] text-[var(--color-text-primary)]">
       <Background />
 
-      <Navbar />
+      <div className="relative z-10">
+        <Navbar />
 
-      <Hero />
+        <Hero />
 
-      <Services />
+        <ScrollStory />
 
-      <Projects />
+        <Services />
 
-      <About />
+        <Projects />
 
-      <Process />
+        <About />
 
-      <Testimonials />
+        <Process />
 
-      <FAQ />
+        <Testimonials />
 
-      <Contact />
+        <FAQ />
 
+        <Contact />
 
-      <Footer />
+        <Footer />
+      </div>
     </main>
   );
 }

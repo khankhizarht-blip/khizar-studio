@@ -1,88 +1,66 @@
 
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-import { useEntrance } from "@/components/providers/EntranceProvider";
+import { motion } from "motion/react";
 import { motionSettings } from "@/design-system";
 
 const containerVariants = {
-  hidden: {},
   visible: {
     transition: {
-      staggerChildren: motionSettings.stagger.relaxed,
-      delayChildren: motionSettings.delay.short,
+      staggerChildren: motionSettings.stagger.normal,
     },
   },
 };
 
 const itemVariants = {
-  hidden: {
-    opacity: 0,
-    y: motionSettings.distance.medium,
-  },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: motionSettings.duration.reveal,
+      duration: motionSettings.duration.normal,
       ease: motionSettings.ease.premium,
     },
   },
 };
 
 const headlineVariants = {
-  hidden: {},
   visible: {
     transition: {
-      staggerChildren: motionSettings.stagger.relaxed,
+      staggerChildren: motionSettings.stagger.tight,
     },
   },
 };
 
 const lineVariants = {
-  hidden: {
-    opacity: 0,
-    y: "110%",
-  },
   visible: {
     opacity: 1,
-    y: "0%",
+    y: 0,
     transition: {
-      duration: motionSettings.duration.reveal,
+      duration: motionSettings.duration.normal,
       ease: motionSettings.ease.premium,
     },
   },
 };
 
 export default function HeroContent() {
-  const reduceMotion = useReducedMotion();
-  const { ready } = useEntrance();
-
   return (
     <motion.div
       className="mx-auto max-w-[860px]"
       variants={containerVariants}
-      initial={reduceMotion ? false : "hidden"}
-      animate={ready ? "visible" : "hidden"}
+      initial={false}
+      animate="visible"
     >
       <motion.div
         variants={itemVariants}
-        className="
-          mx-auto inline-flex rounded-full border
-          border-[var(--color-border)] bg-[var(--color-background-surface)] px-4 py-2
-          text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--color-text-secondary)]
-          backdrop-blur-xl
-        "
+        className="mx-auto inline-flex rounded-full border border-[var(--color-border)] bg-[var(--color-background-surface)] px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[var(--color-text-secondary)] backdrop-blur-xl sm:px-4 sm:text-[11px] sm:tracking-[0.22em]"
       >
         Independent Digital Studio
       </motion.div>
 
       <motion.h1
         variants={headlineVariants}
-        className="
-          mt-7 font-semibold leading-[var(--text-hero-leading)] tracking-[var(--text-hero-tracking)]
-          text-[length:var(--text-hero-size)] text-[var(--color-text-primary)]
-        "
+        className="mt-6 font-semibold leading-[var(--text-hero-leading)] tracking-[var(--text-hero-tracking)] text-[length:var(--text-hero-size)] text-[var(--color-text-primary)] sm:mt-7"
+        style={{ fontFamily: "var(--font-display)" }}
       >
         <span className="block overflow-hidden pb-1">
           <motion.span
@@ -96,11 +74,7 @@ export default function HeroContent() {
         <span className="block overflow-hidden pb-1">
           <motion.span
             variants={lineVariants}
-            className="
-              block bg-gradient-to-r from-[var(--color-text-primary)]
-              via-[var(--color-text-secondary)] to-[var(--color-text-muted)]
-              bg-clip-text text-transparent
-            "
+            className="block bg-gradient-to-r from-[var(--color-text-primary)] via-[var(--color-text-secondary)] to-[var(--color-text-muted)] bg-clip-text text-transparent"
           >
             to move business
           </motion.span>
@@ -118,14 +92,18 @@ export default function HeroContent() {
 
       <motion.p
         variants={itemVariants}
-        className="
-          mx-auto mt-7 max-w-[610px] text-[15px]
-          leading-[1.8] text-[var(--color-text-secondary)] sm:text-[17px]
-        "
+        className="mx-auto mt-5 max-w-[580px] text-[14px] leading-[1.65] text-[var(--color-text-secondary)] sm:mt-7 sm:text-[17px] sm:leading-[1.8]"
       >
-        Independent web design and development for ambitious businesses.
-        I build distinctive, fast, easy-to-use websites designed to earn
-        trust and turn attention into genuine enquiries.
+        <span className="sm:hidden">
+          I design and build distinctive, fast websites that help
+          ambitious businesses earn trust and attract enquiries.
+        </span>
+
+        <span className="hidden sm:inline">
+          Independent web design and development for ambitious businesses.
+          I build distinctive, fast, easy-to-use websites designed to earn
+          trust and turn attention into genuine enquiries.
+        </span>
       </motion.p>
     </motion.div>
   );
