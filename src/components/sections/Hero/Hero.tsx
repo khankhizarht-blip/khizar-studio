@@ -1,9 +1,10 @@
 
 "use client";
 
+import { useEffect, useRef } from "react";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
-import { Parallax } from "@/components/interactions";
+import { gsap, initGSAP } from "@/lib/gsap";
 
 import HeroContent from "./HeroContent";
 import HeroActions from "./HeroActions";
@@ -11,37 +12,86 @@ import HeroStats from "./HeroStats";
 import BrowserShowcase from "./BrowserShowcase";
 
 export default function Hero() {
+  const introRef = useRef<HTMLDivElement>(null);
+  const circleRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const intro = introRef.current;
+    const circle = circleRef.current;
+
+    if (!intro || !circle) return;
+
+    initGSAP();
+
+    const media = gsap.matchMedia();
+
+    media.add(
+      "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
+      () => {
+        const timeline = gsap.timeline({
+          defaults: { ease: "none" },
+          scrollTrigger: {
+            trigger: intro,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.7,
+            invalidateOnRefresh: true,
+          },
+        });
+
+        timeline
+          .fromTo(
+            circle,
+            { scale: 1, opacity: 1 },
+            {
+              scale: 1.3,
+              opacity: 0,
+              duration: 1,
+            },
+            0
+          )
+          .fromTo(
+            intro.querySelector("[data-hero-content]"),
+            { y: 0, opacity: 1 },
+            {
+              y: -35,
+              opacity: 0.85,
+              duration: 1,
+            },
+            0
+          );
+
+        return () => timeline.kill();
+      }
+    );
+
+    return () => media.revert();
+  }, []);
+
   return (
-    <Section className="relative overflow-hidden pb-12 pt-32 sm:pb-20 sm:pt-36 lg:pb-[var(--section-space-compact)] lg:pt-40">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 hidden overflow-hidden md:block"
-      >
-        <Parallax offset={80}>
-          <div className="absolute left-1/2 top-20 h-[500px] w-[500px] -translate-x-1/2 rounded-full border border-[var(--color-border)]" />
-        </Parallax>
+    <div className="relative isolate">
+      <div ref={introRef} className="relative">
+        <Section className="relative overflow-hidden pb-8 pt-32 sm:pt-36 lg:pt-40">
+          <div
+            ref={circleRef}
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-20 hidden h-[500px] w-[500px] -translate-x-1/2 rounded-full border border-[var(--color-border)] md:block"
+          />
+
+          <Container>
+            <div
+              data-hero-content
+              className="relative z-10 mx-auto max-w-4xl text-center"
+            >
+              <HeroContent />
+              <HeroActions />
+              <HeroStats />
+            </div>
+          </Container>
+        </Section>
       </div>
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-b from-transparent to-[var(--color-background)] sm:h-40"
-      />
-
-      <Container>
-        <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="mx-auto max-w-4xl text-center">
-            <HeroContent />
-            <HeroActions />
-            <HeroStats />
-          </div>
-
-          <div className="mt-8 sm:mt-12 lg:mt-16">
-            <Parallax offset={40}>
-              <BrowserShowcase />
-            </Parallax>
-          </div>
-        </div>
-      </Container>
-    </Section>
+      <BrowserShowcase />
+    </div>
   );
 }
