@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import { motionSettings } from "@/design-system";
 import { useEntrance } from "@/components/providers/EntranceProvider";
 
 import Browser from "@/components/browser/Browser";
@@ -17,10 +18,10 @@ export default function BrowserShowcase() {
       }}
       animate={{
         opacity: ready ? 1 : 0,
-        y: ready ? 0 : 20,
+        y: ready ? 0 : 60,
       }}
       transition={{
-        duration: reduceMotion ? 0 : 1,
+        duration: reduceMotion ? 0 : motionSettings.duration.loading,
         delay: reduceMotion ? 0 : 0.5,
         ease: "easeOut",
       }}
@@ -42,28 +43,23 @@ export default function BrowserShowcase() {
           h-96
           max-w-3xl
           rounded-full
-          bg-white/10
+          bg-[var(--color-accent)]/10
           blur-[120px]
         "
       />
 
-      {/* Floating Browser */}
+      {/* Tilt-only browser preview; no perpetual movement */}
 
       <Tilt>
         <motion.div
-          animate={reduceMotion ? undefined : { y: [0, -12, 0] }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          
           className="
-            rounded-3xl
+            rounded-[var(--radius-extra-large)]
             border
-            border-white/10
-            bg-black/40
+            border-[var(--color-border)]
+            bg-[var(--color-background-elevated)]
             p-2
-            shadow-2xl
+            shadow-[var(--shadow-floating)]
             backdrop-blur-xl
           "
         >

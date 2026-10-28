@@ -29,9 +29,9 @@ export default function ProjectCard({
         className="
           group relative grid grid-cols-1 overflow-hidden
           rounded-[var(--radius-extra-large)] border border-[var(--color-border)]
-          bg-neutral-900/40 backdrop-blur-xl
+          bg-[var(--color-background-elevated)] backdrop-blur-xl
           transition-[border-color,background-color] duration-500
-          hover:border-white/25 hover:bg-neutral-900/60
+          hover:border-white/25 hover:bg-[var(--color-background-surface)]
           lg:grid-cols-[1.05fr_0.95fr]
         "
       >
@@ -117,7 +117,7 @@ export default function ProjectCard({
         </Link>
 
         <div className="relative z-0 flex flex-col justify-center p-6 sm:p-8 lg:p-8 xl:p-10">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-neutral-500 sm:text-sm">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-[var(--color-text-muted)] sm:text-sm">
             {project.client && <span>{project.client}</span>}
             {project.year && <span>{project.year}</span>}
 
@@ -129,7 +129,7 @@ export default function ProjectCard({
           </div>
 
           <Link href={caseStudyHref} className="w-fit">
-            <h3 className="mt-5 text-3xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-[var(--color-text-secondary)] sm:text-4xl">
+            <h3 className="mt-5 text-3xl font-semibold tracking-[-0.035em] text-[var(--color-text-primary)] transition-colors duration-300 group-hover:text-[var(--color-text-secondary)] sm:text-4xl">
               {project.title}
             </h3>
           </Link>
@@ -147,14 +147,14 @@ export default function ProjectCard({
               href={caseStudyHref}
               className="
                 inline-flex items-center gap-2
-                rounded-full bg-white px-6 py-3
-                text-sm font-medium text-black
+                rounded-full bg-[var(--color-accent)] px-6 py-3
+                text-sm font-medium text-[var(--color-accent-foreground)]
                 transition-[background-color,transform] duration-300
-                hover:-translate-y-0.5 hover:bg-neutral-200
+                hover:-translate-y-0.5 hover:bg-[var(--color-accent-hover)]
                 focus-visible:outline
                 focus-visible:outline-2
                 focus-visible:outline-offset-4
-                focus-visible:outline-white
+                focus-visible:outline-[var(--color-accent)]
               "
             >
               View Case Study

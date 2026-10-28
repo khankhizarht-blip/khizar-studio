@@ -60,7 +60,7 @@ export default function HeroContent() {
 
   return (
     <motion.div
-      className="mx-auto"
+      className="mx-auto max-w-[860px]"
       variants={containerVariants}
       initial={reduceMotion ? false : "hidden"}
       animate={ready ? "visible" : "hidden"}
@@ -69,8 +69,8 @@ export default function HeroContent() {
         variants={itemVariants}
         className="
           mx-auto inline-flex rounded-full border
-          border-white/10 bg-white/[0.03] px-4 py-2
-          text-xs uppercase tracking-[0.3em] text-zinc-400
+          border-[var(--color-border)] bg-[var(--color-background-surface)] px-4 py-2
+          text-[11px] font-medium uppercase tracking-[0.22em] text-[var(--color-text-secondary)]
           backdrop-blur-xl
         "
       >
@@ -80,8 +80,8 @@ export default function HeroContent() {
       <motion.h1
         variants={headlineVariants}
         className="
-          mt-8 text-5xl font-semibold leading-[1.05]
-          tracking-tight text-white sm:text-6xl lg:text-7xl
+          mt-7 font-semibold leading-[0.99] tracking-[-0.055em]
+          text-[clamp(3rem,7.1vw,7rem)] text-[var(--color-text-primary)]
         "
       >
         <span className="block overflow-hidden pb-1">
@@ -97,8 +97,8 @@ export default function HeroContent() {
           <motion.span
             variants={lineVariants}
             className="
-              block bg-gradient-to-r from-white
-              via-zinc-300 to-zinc-500
+              block bg-gradient-to-r from-[var(--color-text-primary)]
+              via-[var(--color-text-secondary)] to-[var(--color-text-muted)]
               bg-clip-text text-transparent
             "
           >
@@ -119,15 +119,13 @@ export default function HeroContent() {
       <motion.p
         variants={itemVariants}
         className="
-          mx-auto mt-8 max-w-2xl text-base
-          leading-relaxed text-zinc-400 sm:text-lg
+          mx-auto mt-7 max-w-[610px] text-[15px]
+          leading-[1.8] text-[var(--color-text-secondary)] sm:text-[17px]
         "
       >
-        I design and develop premium websites that help
-        businesses earn trust, stand out from competitors,
-        and turn more visitors into potential customers.
-        Every detail is built around performance, clarity,
-        and a better user experience.
+        Independent web design and development for ambitious businesses.
+        I build distinctive, fast, easy-to-use websites designed to earn
+        trust and turn attention into genuine enquiries.
       </motion.p>
     </motion.div>
   );

@@ -130,7 +130,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative bg-neutral-950"
+      className="relative bg-[var(--color-background)]"
     >
       <div
         ref={pinRef}
@@ -143,24 +143,23 @@ export default function Projects() {
       >
         <div
           ref={introRef}
-          className="mx-auto w-full max-w-7xl px-6 lg:px-8"
+          className="mx-auto w-full max-w-[var(--container-max)] px-[var(--page-gutter)]"
         >
           <div className="max-w-3xl">
-            <span className="text-sm uppercase tracking-[0.35em] text-neutral-500">
+            <span className="text-sm uppercase tracking-[0.35em] text-[var(--color-text-muted)]">
               Selected Work
             </span>
 
-            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-white sm:mt-6 sm:text-5xl xl:text-6xl">
-              Thoughtful design.
-              <span className="block text-neutral-500">
-                Built for business.
+            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-[var(--color-text-primary)] sm:mt-6 sm:text-5xl xl:text-6xl">
+              Selected projects.
+              <span className="block text-[var(--color-text-muted)]">
+                Designed for impact.
               </span>
             </h2>
 
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-400 sm:mt-6 sm:text-lg">
-              Explore website concepts that combine polished design,
-              modern development, and clear customer journeys to help
-              businesses present their value online.
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-[var(--color-text-secondary)] sm:mt-6 sm:text-lg">
+              A closer look at concept websites created to showcase clear
+              storytelling, refined interfaces, and thoughtful development.
             </p>
           </div>
         </div>
@@ -169,7 +168,7 @@ export default function Projects() {
           ref={galleryRef}
           className="mt-10 w-full sm:mt-12 lg:mt-8"
         >
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-[var(--container-max)] px-[var(--page-gutter)]">
             <div
               ref={viewportRef}
               className="overflow-hidden"
@@ -200,24 +199,24 @@ export default function Projects() {
             </div>
 
             <div className="mt-6 hidden items-center gap-5 lg:flex">
-              <span className="shrink-0 text-[10px] uppercase tracking-[0.25em] text-neutral-500">
+              <span className="shrink-0 text-[10px] uppercase tracking-[0.25em] text-[var(--color-text-muted)]">
                 Scroll to explore
               </span>
 
               <div
                 aria-hidden="true"
-                className="h-px flex-1 overflow-hidden bg-white/10"
+                className="h-px flex-1 overflow-hidden bg-[var(--color-border)]"
               >
                 <div
                   ref={progressRef}
-                  className="h-full w-full origin-left scale-x-0 bg-white"
+                  className="h-full w-full origin-left scale-x-0 bg-[var(--color-accent)]"
                 />
               </div>
 
               <span
                 ref={counterRef}
                 aria-label="Current project and total projects"
-                className="shrink-0 text-xs tabular-nums text-neutral-500"
+                className="shrink-0 text-xs tabular-nums text-[var(--color-text-muted)]"
               >
                 01 / {formattedTotal}
               </span>

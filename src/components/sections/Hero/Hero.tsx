@@ -13,7 +13,7 @@ import BrowserShowcase from "./BrowserShowcase";
 
 export default function Hero() {
   return (
-    <Section className="relative overflow-hidden">
+    <Section className="relative overflow-hidden pb-[var(--section-space-compact)]">
       <Parallax offset={80}>
         <div
           aria-hidden="true"
@@ -27,7 +27,7 @@ export default function Hero() {
             -translate-x-1/2
             rounded-full
             border
-            border-white/5
+            border-[var(--color-border)]
           "
         />
       </Parallax>
@@ -43,8 +43,8 @@ export default function Hero() {
           h-40
           bg-gradient-to-b
           from-transparent
-          via-neutral-950/40
-          to-neutral-950
+          via-[var(--color-background)]/40
+          to-[var(--color-background)]
         "
       />
 
@@ -59,7 +59,7 @@ export default function Hero() {
           </div>
 
           <Parallax offset={40}>
-            <div className="mt-20 lg:mt-24">
+            <div className="mt-14 lg:mt-16">
               <BrowserShowcase />
             </div>
           </Parallax>

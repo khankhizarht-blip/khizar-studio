@@ -26,19 +26,19 @@ export default function HeroActions() {
         delay: reduceMotion ? 0 : 0.2,
       }}
       className="
-        mt-10
+        mt-9
         flex
         flex-col
         items-center
         justify-center
-        gap-4
+        gap-3
         sm:flex-row
       "
     >
       <Link href="/#contact">
         <Button size="lg">
           <Sparkles className="mr-2 h-5 w-5" />
-          Let&apos;s Talk About Your Project
+          Discuss Your Project
           <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
       </Link>
@@ -52,20 +52,20 @@ export default function HeroActions() {
           justify-center
           rounded-full
           border
-          border-white/10
-          bg-white/[0.03]
+          border-[var(--color-border-strong)]
+          bg-[var(--color-background-surface)]
           px-7
           text-sm
           font-medium
-          text-zinc-300
+          text-[var(--color-text-secondary)]
           transition
           duration-300
-          hover:border-white/20
-          hover:bg-white/[0.08]
-          hover:text-white
+          hover:border-[var(--color-border-strong)]
+          hover:bg-[var(--color-background-hover)]
+          hover:text-[var(--color-text-primary)]
         "
       >
-        Explore Our Work
+        View Selected Work
       </Link>
     </motion.div>
   );

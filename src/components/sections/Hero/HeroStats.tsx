@@ -24,11 +24,11 @@ export default function HeroStats() {
       }}
       className="
         mx-auto
-        mt-16
+        mt-12
         grid
         max-w-4xl
         grid-cols-2
-        gap-4
+        gap-3
         sm:grid-cols-4
       "
     >
@@ -38,22 +38,22 @@ export default function HeroStats() {
           className="
             rounded-2xl
             border
-            border-white/10
-            bg-white/[0.03]
-            p-5
+            border-[var(--color-border)]
+            bg-[var(--color-background-elevated)]
+            p-4 sm:p-5
             backdrop-blur-xl
             transition
             duration-300
-            hover:border-white/20
-            hover:bg-white/[0.06]
+            hover:border-[var(--color-border-strong)]
+            hover:bg-[var(--color-background-hover)]
           "
         >
           <p
             className="
-              text-2xl
+              text-base leading-tight
               font-semibold
-              text-white
-              sm:text-3xl
+              text-[var(--color-text-primary)]
+              sm:text-lg
             "
           >
             {stat.value}
@@ -65,7 +65,7 @@ export default function HeroStats() {
               text-xs
               uppercase
               tracking-[0.2em]
-              text-zinc-500
+              text-[var(--color-text-muted)]
             "
           >
             {stat.label}
