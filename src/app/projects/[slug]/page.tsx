@@ -37,7 +37,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.title} | Khizar Studio`,
+    title: project.title,
     description: project.description,
   };
 }

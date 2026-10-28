@@ -145,6 +145,7 @@ export default function ProjectCard({
           <div className="mt-7">
             <Link
               href={caseStudyHref}
+              style={{ color: "var(--color-accent-foreground)" }}
               className="
                 inline-flex items-center gap-2
                 rounded-full bg-[var(--color-accent)] px-6 py-3

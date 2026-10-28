@@ -1,3 +1,4 @@
+import HashScroll from "@/components/navigation/HashScroll";
 import { Background } from "@/components/background";
 import { Footer, Navbar } from "@/components/layout";
 import { About } from "@/components/sections";
@@ -14,6 +15,7 @@ import {
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white">
+      <HashScroll />
       <Background />
 
       <Navbar />

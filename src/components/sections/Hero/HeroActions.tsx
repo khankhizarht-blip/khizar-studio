@@ -6,7 +6,6 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { useEntrance } from "@/components/providers/EntranceProvider";
 
-import { Button } from "@/components/ui";
 
 export default function HeroActions() {
   const { ready } = useEntrance();
@@ -35,12 +34,14 @@ export default function HeroActions() {
         sm:flex-row
       "
     >
-      <Link href="/#contact">
-        <Button size="lg">
-          <Sparkles className="mr-2 h-5 w-5" />
-          Discuss Your Project
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
+      <Link
+        href="/#contact"
+        className="inline-flex min-h-14 items-center justify-center rounded-full bg-[var(--color-accent)] px-7 text-base font-medium text-[var(--color-accent-foreground)] transition-colors duration-300 hover:bg-[var(--color-accent-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+        style={{ color: "var(--color-accent-foreground)" }}
+      >
+        <Sparkles aria-hidden="true" className="mr-2 h-5 w-5" />
+        Discuss Your Project
+        <ArrowRight aria-hidden="true" className="ml-2 h-5 w-5" />
       </Link>
 
       <Link
