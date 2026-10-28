@@ -6,19 +6,19 @@ import FAQItem from "./FAQItem";
 
 export default function FAQ() {
   return (
-    <Section id="faq" className="py-24 sm:py-28 lg:py-32">
+    <Section id="faq" className="py-[var(--section-space)]">
       <Container>
         <div className="mx-auto max-w-3xl">
           <div className="text-center">
-            <p className="text-sm uppercase tracking-[0.3em] text-zinc-500">
+            <p className="text-sm uppercase tracking-[var(--text-eyebrow-tracking)] text-[var(--color-text-muted)]">
               Good to Know
             </p>
 
-            <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-white sm:mt-6 sm:text-5xl">
+            <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-[var(--color-text-primary)] sm:mt-6 sm:text-5xl">
               Questions, answered.
             </h2>
 
-            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
               Everything you need to know about working with Khizar
               Studio, from the first conversation to your website launch.
             </p>

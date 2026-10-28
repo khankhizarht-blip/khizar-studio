@@ -28,44 +28,44 @@ export default function TestimonialCard({
           overflow-hidden
           rounded-3xl
           border
-          border-white/10
-          bg-white/[0.03]
+          border-[var(--color-border)]
+          bg-[var(--surface-card)]
           p-7
           backdrop-blur-xl
           transition-colors
           duration-500
-          hover:border-white/20
-          hover:bg-white/[0.05]
+          hover:border-[var(--color-border-strong)]
+          hover:bg-[var(--surface-card-hover)]
           sm:p-9
         "
       >
-        <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/[0.025] blur-3xl transition-colors duration-500 group-hover:bg-white/[0.06]" />
+        <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-[var(--surface-glow)] blur-3xl transition-colors duration-500 group-hover:bg-[var(--surface-glow-hover)]" />
 
         <div className="relative flex items-center justify-between">
           <Quote
             size={25}
             strokeWidth={1.5}
-            className="text-zinc-500 transition-colors duration-300 group-hover:text-zinc-300"
+            className="text-[var(--color-text-muted)] transition-colors duration-300 group-hover:text-[var(--color-text-secondary)]"
             aria-hidden="true"
           />
 
-          <span className="text-xs tracking-[0.2em] text-zinc-600">
+          <span className="text-xs tracking-[0.2em] text-[var(--color-text-muted)]">
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>
 
         <blockquote className="relative mt-7">
-          <p className="text-base leading-8 text-zinc-300 sm:text-lg">
+          <p className="text-base leading-8 text-[var(--color-text-secondary)] sm:text-lg">
             “{testimonial.message}”
           </p>
         </blockquote>
 
-        <div className="relative mt-8 border-t border-white/[0.08] pt-6">
-          <p className="font-medium tracking-tight text-white">
+        <div className="relative mt-8 border-t border-[var(--color-border)] pt-6">
+          <p className="font-medium tracking-tight text-[var(--color-text-primary)]">
             {testimonial.name}
           </p>
 
-          <p className="mt-1 text-sm leading-relaxed text-zinc-500">
+          <p className="mt-1 text-sm leading-relaxed text-[var(--color-text-muted)]">
             {testimonial.role} · {testimonial.company}
           </p>
         </div>

@@ -1,23 +1,26 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
+import { useEntrance } from "@/components/providers/EntranceProvider";
 
 import { stats } from "@/data/stats";
 
 export default function HeroStats() {
+  const { ready } = useEntrance();
+  const reduceMotion = useReducedMotion();
   return (
     <motion.div
-      initial={{
+      initial={reduceMotion ? false : {
         opacity: 0,
         y: 30,
       }}
       animate={{
-        opacity: 1,
-        y: 0,
+        opacity: ready ? 1 : 0,
+        y: ready ? 0 : 20,
       }}
       transition={{
-        duration: 0.8,
-        delay: 0.4,
+        duration: reduceMotion ? 0 : 0.8,
+        delay: reduceMotion ? 0 : 0.4,
       }}
       className="
         mx-auto

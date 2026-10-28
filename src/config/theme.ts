@@ -1,19 +1,27 @@
-export const themeConfig = {
-  colors: {
-    background: "#050505",
-    foreground: "#ffffff",
-    muted: "#a1a1aa",
-  },
 
-  animation: {
-    duration: {
-      fast: 0.3,
-      normal: 0.6,
-      slow: 1,
-    },
+import {
+  designTokens,
+  typography,
+  motionSettings,
+} from "@/design-system";
 
-    easing: {
-      smooth: "power3.out",
-    },
+export const theme = {
+  ...designTokens,
+  typography: {
+    ...designTokens.typography,
+    ...typography.fontFamily,
+    ...typography.weight,
+    sizes: typography.size,
+    lineHeight: typography.lineHeight,
+    letterSpacing: typography.letterSpacing,
+    textStyles: typography.textStyles,
   },
-};
+  motion: {
+    ...designTokens.motion,
+    ...motionSettings,
+  },
+} as const;
+
+export type Theme = typeof theme;
+
+export default theme;

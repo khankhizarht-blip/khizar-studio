@@ -1,24 +1,27 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
+import { useEntrance } from "@/components/providers/EntranceProvider";
 
 import Browser from "@/components/browser/Browser";
 import { Tilt } from "@/components/interactions";
 
 export default function BrowserShowcase() {
+  const { ready } = useEntrance();
+  const reduceMotion = useReducedMotion();
   return (
     <motion.div
-      initial={{
+      initial={reduceMotion ? false : {
         opacity: 0,
         y: 60,
       }}
       animate={{
-        opacity: 1,
-        y: 0,
+        opacity: ready ? 1 : 0,
+        y: ready ? 0 : 20,
       }}
       transition={{
-        duration: 1,
-        delay: 0.5,
+        duration: reduceMotion ? 0 : 1,
+        delay: reduceMotion ? 0 : 0.5,
         ease: "easeOut",
       }}
       className="
@@ -48,9 +51,7 @@ export default function BrowserShowcase() {
 
       <Tilt>
         <motion.div
-          animate={{
-            y: [0, -12, 0],
-          }}
+          animate={reduceMotion ? undefined : { y: [0, -12, 0] }}
           transition={{
             duration: 6,
             repeat: Infinity,

@@ -1,20 +1,91 @@
+
 :root {
-  --background: #050505;
-  --foreground: #ffffff;
+  color-scheme: dark;
 
-  --muted: #a1a1aa;
+  /* Colors */
+  --color-background: #08090b;
+  --color-background-elevated: #101114;
+  --color-background-surface: #15161a;
+  --color-background-hover: #1c1d22;
 
-  --border: rgba(255, 255, 255, 0.1);
+  --color-text-primary: #f5f5f7;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
 
-  --surface: rgba(255, 255, 255, 0.05);
+  --color-accent: #b8ff65;
+  --color-accent-hover: #c9ff8d;
+  --color-accent-foreground: #08090b;
 
-  --radius-sm: 0.5rem;
-  --radius-md: 1rem;
-  --radius-lg: 1.5rem;
-  --radius-xl: 2rem;
+  --color-border: rgb(255 255 255 / 10%);
+  --color-border-strong: rgb(255 255 255 / 18%);
 
-  --container-width: 1280px;
+  --color-success: #86efac;
+  --color-warning: #fcd34d;
+  --color-error: #fda4af;
 
-  --transition-fast: 300ms;
-  --transition-normal: 500ms;
+  /* Surface layers keep the existing translucent card appearance. */
+  --surface-card: rgb(255 255 255 / 3%);
+  --surface-card-hover: rgb(255 255 255 / 5%);
+  --surface-icon: rgb(255 255 255 / 4%);
+  --surface-icon-hover: rgb(255 255 255 / 8%);
+  --surface-glow: rgb(255 255 255 / 3%);
+  --surface-glow-hover: rgb(255 255 255 / 7%);
+  --surface-feature: rgb(0 0 0 / 20%);
+  --border-subtle: rgb(255 255 255 / 7%);
+
+  /* Typography */
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-display: Arial, Helvetica, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, monospace;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --text-heading-size: clamp(2.25rem, 5.5vw, 5rem);
+  --text-heading-leading: 1.05;
+  --text-heading-tracking: -0.04em;
+  --text-eyebrow-tracking: 0.08em;
+
+  /* Layout */
+  --container-max: 1280px;
+  --container-wide: 1440px;
+  --page-gutter: clamp(20px, 5vw, 80px);
+
+  --section-space: clamp(88px, 12vw, 160px);
+  --section-space-compact: clamp(56px, 8vw, 104px);
+
+  /* Border radius */
+  --radius-small: 8px;
+  --radius-medium: 14px;
+  --radius-large: 22px;
+  --radius-extra-large: 32px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-soft: 0 8px 32px rgb(0 0 0 / 18%);
+  --shadow-card: 0 20px 60px rgb(0 0 0 / 24%);
+  --shadow-floating: 0 32px 100px rgb(0 0 0 / 35%);
+
+  /* Animation timing */
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 700ms;
+  --duration-reveal: 800ms;
+  --duration-stagger: 80ms;
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* Respect the visitor's motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+    --duration-reveal: 0ms;
+    --duration-stagger: 0ms;
+  }
 }

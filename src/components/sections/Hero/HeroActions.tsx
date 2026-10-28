@@ -3,24 +3,27 @@
 
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
+import { useEntrance } from "@/components/providers/EntranceProvider";
 
 import { Button } from "@/components/ui";
 
 export default function HeroActions() {
+  const { ready } = useEntrance();
+  const reduceMotion = useReducedMotion();
   return (
     <motion.div
-      initial={{
+      initial={reduceMotion ? false : {
         opacity: 0,
         y: 20,
       }}
       animate={{
-        opacity: 1,
-        y: 0,
+        opacity: ready ? 1 : 0,
+        y: ready ? 0 : 20,
       }}
       transition={{
-        duration: 0.7,
-        delay: 0.2,
+        duration: reduceMotion ? 0 : 0.7,
+        delay: reduceMotion ? 0 : 0.2,
       }}
       className="
         mt-10

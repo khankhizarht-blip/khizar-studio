@@ -28,7 +28,7 @@ export default function ProjectCard({
         whileHover="hover"
         className="
           group relative grid grid-cols-1 overflow-hidden
-          rounded-3xl border border-white/10
+          rounded-[var(--radius-extra-large)] border border-[var(--color-border)]
           bg-neutral-900/40 backdrop-blur-xl
           transition-[border-color,background-color] duration-500
           hover:border-white/25 hover:bg-neutral-900/60
@@ -39,7 +39,7 @@ export default function ProjectCard({
           aria-hidden="true"
           className="
             pointer-events-none absolute inset-0 z-10
-            rounded-3xl border border-white/0
+            rounded-[var(--radius-extra-large)] border border-white/0
             transition-colors duration-500
             group-hover:border-white/[0.06]
           "
@@ -88,7 +88,7 @@ export default function ProjectCard({
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-black/15" />
 
           <div className="absolute bottom-5 left-5 sm:bottom-6 sm:left-6">
-            <span className="rounded-full border border-white/20 bg-black/40 px-4 py-2 text-xs uppercase tracking-widest text-white/90 backdrop-blur-md transition-colors duration-500 group-hover:border-white/35 group-hover:bg-black/55">
+            <span className="rounded-full border border-[var(--color-border-strong)] bg-black/40 px-4 py-2 text-xs uppercase tracking-widest text-white/90 backdrop-blur-md transition-colors duration-500 group-hover:border-white/35 group-hover:bg-black/55">
               {project.category}
             </span>
           </div>
@@ -106,7 +106,7 @@ export default function ProjectCard({
             className="
               absolute right-5 top-5 flex h-10 w-10
               items-center justify-center rounded-full
-              border border-white/20 text-white
+              border border-[var(--color-border-strong)] text-white
               backdrop-blur-md
               group-hover:text-black
               sm:right-6 sm:top-6
@@ -122,19 +122,19 @@ export default function ProjectCard({
             {project.year && <span>{project.year}</span>}
 
             {project.status && (
-              <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-neutral-400 transition-colors duration-300 group-hover:border-white/20 group-hover:text-neutral-300">
+              <span className="rounded-full border border-[var(--color-border)] px-3 py-1 text-xs text-[var(--color-text-secondary)] transition-colors duration-300 group-hover:border-[var(--color-border-strong)] group-hover:text-[var(--color-text-secondary)]">
                 {project.status}
               </span>
             )}
           </div>
 
           <Link href={caseStudyHref} className="w-fit">
-            <h3 className="mt-5 text-3xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-neutral-300 sm:text-4xl">
+            <h3 className="mt-5 text-3xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-[var(--color-text-secondary)] sm:text-4xl">
               {project.title}
             </h3>
           </Link>
 
-          <p className="mt-4 leading-relaxed text-neutral-400">
+          <p className="mt-4 leading-relaxed text-[var(--color-text-secondary)]">
             {project.description}
           </p>
 

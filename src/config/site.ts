@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "A premium frontend development studio creating modern, high-performance digital experiences.",
 
-  url: "https://khizarstudio.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://khizar-studio.vercel.app",
 
   author: {
     name: "Khizar Hayat",
@@ -16,5 +16,5 @@ export const siteConfig = {
     twitter: "",
   },
 
-  email: "hello@khizarstudio.com",
+  email: "khankhizarht@gmail.com",
 };

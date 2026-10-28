@@ -61,7 +61,7 @@ export default function MobileMenu({
             fixed
             inset-0
             z-40
-            bg-black/80
+            bg-[var(--color-background)]/80
             px-6
             pt-28
             backdrop-blur-xl
@@ -72,8 +72,8 @@ export default function MobileMenu({
             className="
               rounded-3xl
               border
-              border-white/10
-              bg-white/[0.03]
+              border-[var(--color-border)]
+              bg-[var(--color-background-surface)]/60
               p-8
             "
           >
@@ -110,11 +110,11 @@ export default function MobileMenu({
                         block
                         text-2xl
                         font-medium
-                        text-white
+                        text-[var(--color-text-primary)]
                         outline-none
                         transition
-                        hover:text-zinc-400
-                        focus-visible:text-zinc-400
+                        hover:text-[var(--color-text-secondary)]
+                        focus-visible:text-[var(--color-text-secondary)]
                       "
                     >
                       {item.label}

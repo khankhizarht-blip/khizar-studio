@@ -123,17 +123,17 @@ export default function Navbar() {
             justify-between
             rounded-full
             border
-            border-white/10
+            border-[var(--color-border)]
             px-6
             py-3
             transition-all
-            duration-300
+            duration-[var(--duration-normal)]
             lg:px-8
 
             ${
               scrolled
-                ? "bg-black/80 backdrop-blur-xl shadow-2xl"
-                : "bg-black/40 backdrop-blur-md"
+                ? "bg-[var(--color-background)]/80 backdrop-blur-xl shadow-2xl"
+                : "bg-[var(--color-background)]/40 backdrop-blur-md"
             }
           `}
         >
@@ -158,13 +158,13 @@ export default function Navbar() {
                   px-2
                   py-1
                   text-sm
-                  text-zinc-400
+                  text-[var(--color-text-secondary)]
                   outline-none
                   transition-colors
-                  hover:text-white
-                  focus-visible:text-white
+                  hover:text-[var(--color-text-primary)]
+                  focus-visible:text-[var(--color-text-primary)]
                   focus-visible:ring-2
-                  focus-visible:ring-white/30
+                  focus-visible:ring-[var(--color-border-strong)]
                 "
               >
                 {item.label}
@@ -194,13 +194,13 @@ export default function Navbar() {
               justify-center
               rounded-full
               border
-              border-white/10
-              text-white
+              border-[var(--color-border)]
+              text-[var(--color-text-primary)]
               outline-none
               transition-colors
-              hover:bg-white/10
+              hover:bg-[var(--color-background-hover)]
               focus-visible:ring-2
-              focus-visible:ring-white/30
+              focus-visible:ring-[var(--color-border-strong)]
               md:hidden
             "
           >

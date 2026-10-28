@@ -17,19 +17,19 @@ export default function ProjectTech({
         <span
           key={technology}
           className="
-            rounded-full
+            rounded-[var(--radius-pill)]
             border
-            border-white/10
-            bg-white/[0.03]
+            border-[var(--color-border)]
+            bg-[var(--color-background-surface)]
             px-4
             py-2
             text-xs
             font-medium
             tracking-wide
-            text-neutral-300
+            text-[var(--color-text-secondary)]
             transition
-            duration-300
-            group-hover:border-white/20
+            duration-[var(--duration-normal)]
+            group-hover:border-[var(--color-border-strong)]
           "
         >
           {technology}

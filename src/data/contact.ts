@@ -1,3 +1,4 @@
+import { siteConfig } from "@/config/site";
 import type { Contact } from "@/types/contact";
 
 export const contact: Contact = {
@@ -8,7 +9,7 @@ export const contact: Contact = {
   description:
     "Whether you're launching a new business or upgrading an existing one, let's create a fast, modern website that helps you grow.",
 
-  email: "hello@khizarstudio.com",
+  email: siteConfig.email,
 
   primaryButton: "Start a Project",
 

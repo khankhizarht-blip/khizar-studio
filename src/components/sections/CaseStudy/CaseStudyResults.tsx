@@ -14,11 +14,11 @@ export default function CaseStudyResults({
     <div className="mx-auto max-w-7xl px-6 lg:px-8">
       <Reveal>
         <div>
-          <p className="text-sm uppercase tracking-[0.35em] text-neutral-500">
+          <p className="text-sm uppercase tracking-[0.35em] text-[var(--color-text-muted)]">
             The Results
           </p>
 
-          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white">
+          <h2 className="mt-5 text-3xl font-semibold tracking-tight text-[var(--color-text-primary)]">
             What we achieved
           </h2>
 
@@ -26,13 +26,13 @@ export default function CaseStudyResults({
             {project.results?.map((result, index) => (
               <div
                 key={index}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+                className="rounded-[var(--radius-large)] border border-[var(--color-border)] bg-[var(--color-background-surface)] p-6"
               >
-                <span className="text-sm text-neutral-600">
+                <span className="text-sm text-[var(--color-text-muted)]">
                   0{index + 1}
                 </span>
 
-                <p className="mt-4 text-lg text-neutral-200">
+                <p className="mt-4 text-lg text-[var(--color-text-primary)]">
                   {result}
                 </p>
               </div>

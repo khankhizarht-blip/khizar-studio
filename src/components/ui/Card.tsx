@@ -1,3 +1,4 @@
+
 import { HTMLAttributes } from "react";
 import { cn } from "@/utils/cn";
 
@@ -8,7 +9,7 @@ export default function Card({
   return (
     <div
       className={cn(
-        "rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm",
+        "rounded-[var(--radius-large)] border border-[var(--color-border)] bg-[var(--surface-card)] backdrop-blur-sm transition-colors duration-[var(--duration-normal)]",
         className
       )}
       {...props}

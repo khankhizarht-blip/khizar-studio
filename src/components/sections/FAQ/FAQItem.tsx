@@ -26,12 +26,12 @@ export default function FAQItem({
           overflow-hidden
           rounded-2xl
           border
-          border-white/10
-          bg-white/[0.03]
+          border-[var(--color-border)]
+          bg-[var(--surface-card)]
           transition-colors
           duration-300
-          hover:border-white/20
-          hover:bg-white/[0.04]
+          hover:border-[var(--color-border-strong)]
+          hover:bg-[var(--surface-icon)]
         "
       >
         <button
@@ -57,7 +57,7 @@ export default function FAQItem({
             sm:py-6
           "
         >
-          <span className="text-sm font-medium leading-relaxed text-white sm:text-base">
+          <span className="text-sm font-medium leading-relaxed text-[var(--color-text-primary)] sm:text-base">
             {question}
           </span>
 
@@ -71,12 +71,12 @@ export default function FAQItem({
               justify-center
               rounded-full
               border
-              border-white/10
-              text-zinc-400
+              border-[var(--color-border)]
+              text-[var(--color-text-secondary)]
               transition-colors
               duration-300
-              group-hover:text-white
-              ${open ? "bg-white/[0.08] text-white" : ""}
+              group-hover:text-[var(--color-text-primary)]
+              ${open ? "bg-[var(--surface-icon-hover)] text-[var(--color-text-primary)]" : ""}
             `}
           >
             <ChevronDown
@@ -110,7 +110,7 @@ export default function FAQItem({
           `}
         >
           <div className="overflow-hidden">
-            <p className="px-5 pb-5 text-sm leading-7 text-zinc-400 sm:px-6 sm:pb-6">
+            <p className="px-5 pb-5 text-sm leading-7 text-[var(--color-text-secondary)] sm:px-6 sm:pb-6">
               {answer}
             </p>
           </div>

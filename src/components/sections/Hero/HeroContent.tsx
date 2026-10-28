@@ -2,6 +2,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import { useEntrance } from "@/components/providers/EntranceProvider";
+import { motionSettings } from "@/design-system";
 
 const containerVariants = {
   hidden: {},
@@ -22,8 +24,8 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.75,
-      ease: [0.22, 1, 0.36, 1] as const,
+      duration: motionSettings.duration.reveal,
+      ease: motionSettings.ease.premium,
     },
   },
 };
@@ -46,21 +48,22 @@ const lineVariants = {
     opacity: 1,
     y: "0%",
     transition: {
-      duration: 0.9,
-      ease: [0.22, 1, 0.36, 1] as const,
+      duration: motionSettings.duration.reveal,
+      ease: motionSettings.ease.premium,
     },
   },
 };
 
 export default function HeroContent() {
   const reduceMotion = useReducedMotion();
+  const { ready } = useEntrance();
 
   return (
     <motion.div
       className="mx-auto"
       variants={containerVariants}
       initial={reduceMotion ? false : "hidden"}
-      animate="visible"
+      animate={ready ? "visible" : "hidden"}
     >
       <motion.div
         variants={itemVariants}

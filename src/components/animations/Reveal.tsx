@@ -1,19 +1,17 @@
+
 "use client";
 
 import { ReactNode, useRef } from "react";
-
 import { gsap } from "@/lib/gsap";
 import useGSAP from "@/hooks/useGSAP";
+import { motionSettings } from "@/design-system";
 
 interface RevealProps {
   children: ReactNode;
   className?: string;
 }
 
-export default function Reveal({
-  children,
-  className,
-}: RevealProps) {
+export default function Reveal({ children, className }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -25,13 +23,13 @@ export default function Reveal({
       gsap.fromTo(
         element,
         {
-          y: 50,
+          y: motionSettings.distance.large,
           opacity: 0,
         },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
+          duration: motionSettings.duration.reveal,
           ease: "power3.out",
           scrollTrigger: {
             trigger: element,

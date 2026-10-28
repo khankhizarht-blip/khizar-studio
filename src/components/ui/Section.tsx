@@ -16,7 +16,7 @@ export default function Section({
     <section
       id={id}
       className={cn(
-        "relative py-24 lg:py-32",
+        "relative py-[var(--section-space)]",
         className
       )}
     >

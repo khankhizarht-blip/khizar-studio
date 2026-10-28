@@ -7,21 +7,21 @@ import TestimonialCard from "./TestimonialCard";
 
 export default function Testimonials() {
   return (
-    <Section className="py-24 sm:py-28 lg:py-32">
+    <Section className="py-[var(--section-space)]">
       <Container>
         <div className="max-w-3xl">
-          <p className="text-sm uppercase tracking-[0.3em] text-zinc-500">
+          <p className="text-sm uppercase tracking-[var(--text-eyebrow-tracking)] text-[var(--color-text-muted)]">
             Client Perspectives
           </p>
 
-          <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-white sm:mt-6 sm:text-5xl lg:text-6xl">
+          <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-[var(--color-text-primary)] sm:mt-6 sm:text-5xl lg:text-6xl">
             Good work builds trust.
-            <span className="block text-zinc-500">
+            <span className="block text-[var(--color-text-muted)]">
               Great experiences keep it.
             </span>
           </h2>
 
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
             A successful website is about more than its appearance.
             Clear communication, thoughtful execution, and attention
             to detail matter throughout the entire project.

@@ -76,20 +76,20 @@ export default function Services() {
   );
 
   return (
-    <Section id="services" className="py-32">
+    <Section id="services" className="py-[var(--section-space)]">
       <Container>
         <div ref={headingRef} className="max-w-2xl">
-          <p className="text-sm uppercase tracking-[0.3em] text-zinc-500">
+          <p className="text-sm uppercase tracking-[var(--text-eyebrow-tracking)] text-[var(--color-text-muted)]">
             What We Do
           </p>
 
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[var(--color-text-primary)] sm:text-5xl">
             More than a website.
             <br />
             A better way to grow.
           </h2>
 
-          <p className="mt-5 max-w-xl leading-relaxed text-zinc-400">
+          <p className="mt-5 max-w-xl leading-relaxed text-[var(--color-text-secondary)]">
             Your website should do more than look good. It should build
             trust, communicate your value, and make it easier for the
             right customers to choose your business.

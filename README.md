@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Khizar Studio
 
-## Getting Started
+Premium business website portfolio built with Next.js 16, React 19, TypeScript, Tailwind CSS 4, Motion, GSAP, and Lenis.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Check production output with `npm run build` and lint with `npm run lint`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project organization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app`: routes, global CSS, SEO metadata.
+- `src/components/sections`: homepage sections and project case studies.
+- `src/components/ui`: shared visual primitives.
+- `src/components/animations` and `src/components/interactions`: reusable motion and interaction wrappers.
+- `src/components/providers/EntranceProvider.tsx`: coordinates loading overlay and Hero entrance.
+- `src/design-system`: design tokens, typography and motion presets.
+- `src/styles/variables.css`: **authoritative CSS custom properties** for site colors, fonts, layout, radii and CSS motion timings.
+- `src/config/site.ts`: site name, canonical URL, public email and links.
+- `src/data`: projects, services, testimonials, FAQ, contact and other page copy.
 
-## Learn More
+## Deployment configuration
 
-To learn more about Next.js, take a look at the following resources:
+Set `NEXT_PUBLIC_SITE_URL` to your actual public website URL before production deployment. The fallback is the current Vercel preview domain. Update the public email in `src/config/site.ts` when needed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Portfolio content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The included Summit Construction and Creative Agency entries are website concepts. Verify that all testimonials, statistics, and client claims are genuine before publishing them as real customer results.
 
-## Deploy on Vercel
+## Motion and accessibility
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The loading screen signals completion before Hero entrance animations begin. Reduced-motion visitors receive minimal animation. The horizontal pinned Projects gallery is intentionally retained for desktop visitors without reduced-motion preferences.

@@ -10,10 +10,10 @@ export default function ContactCard() {
     <SlideUp delay={0.15}>
       <div
         className="
-          rounded-3xl
+          rounded-[var(--radius-extra-large)]
           border
-          border-white/10
-          bg-white/[0.03]
+          border-[var(--color-border)]
+          bg-[var(--surface-card)]
           p-10
           backdrop-blur-xl
         "
@@ -40,8 +40,8 @@ export default function ContactCard() {
             mt-6
             text-sm
             uppercase
-            tracking-[0.3em]
-            text-zinc-500
+            tracking-[var(--text-eyebrow-tracking)]
+            text-[var(--color-text-muted)]
           "
         >
           {contact.badge}
@@ -54,7 +54,7 @@ export default function ContactCard() {
             text-4xl
             font-semibold
             tracking-tight
-            text-white
+            text-[var(--color-text-primary)]
             sm:text-5xl
           "
         >
@@ -67,7 +67,7 @@ export default function ContactCard() {
             max-w-2xl
             text-lg
             leading-relaxed
-            text-zinc-400
+            text-[var(--color-text-secondary)]
           "
         >
           {contact.description}
@@ -86,7 +86,7 @@ export default function ContactCard() {
           </Button>
         </div>
 
-        <p className="mt-8 text-sm text-zinc-500">
+        <p className="mt-8 text-sm text-[var(--color-text-muted)]">
           {contact.email}
         </p>
       </div>

@@ -2,10 +2,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { EntranceProvider } from "@/components/providers/EntranceProvider";
+import { siteConfig } from "@/config/site";
+
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import { LoadingScreen } from "@/components/layout";
 
-const siteUrl = "https://khizar-studio.vercel.app";
+const siteUrl = siteConfig.url;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -79,8 +82,10 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body>
-        <LoadingScreen />
-        <SmoothScroll>{children}</SmoothScroll>
+        <EntranceProvider>
+          <LoadingScreen />
+          <SmoothScroll>{children}</SmoothScroll>
+        </EntranceProvider>
       </body>
     </html>
   );

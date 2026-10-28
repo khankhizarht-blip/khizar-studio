@@ -3,6 +3,7 @@
 
 import { motion, useReducedMotion } from "motion/react";
 import { ReactNode } from "react";
+import { animationPresets, motionSettings } from "@/design-system";
 
 interface FadeInProps {
   children: ReactNode;
@@ -16,15 +17,16 @@ export default function FadeIn({
   className,
 }: FadeInProps) {
   const reduceMotion = useReducedMotion();
+  const preset = animationPresets.fadeIn;
 
   return (
     <motion.div
-      initial={reduceMotion ? false : { opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={reduceMotion ? false : preset.initial}
+      animate={preset.animate}
       transition={{
-        duration: reduceMotion ? 0 : 0.8,
+        ...preset.transition,
+        duration: reduceMotion ? 0 : motionSettings.duration.reveal,
         delay: reduceMotion ? 0 : delay,
-        ease: "easeOut",
       }}
       className={className}
     >
