@@ -14,7 +14,7 @@ export default function FAQ() {
               Good to Know
             </p>
 
-            <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-[var(--color-text-primary)] sm:mt-6 sm:text-5xl">
+            <h2 className="mt-5 text-[length:var(--text-section-size)] font-semibold leading-[var(--text-section-leading)] tracking-[var(--text-heading-tracking)] text-[var(--color-text-primary)]">
               Questions, answered.
             </h2>
 

@@ -16,7 +16,7 @@ export default function Process() {
               How We Work
             </span>
 
-            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-[var(--color-text-primary)] sm:mt-6 sm:text-6xl">
+            <h2 className="mt-5 text-[length:var(--text-section-size)] font-semibold leading-[var(--text-section-leading)] tracking-[var(--text-heading-tracking)] text-[var(--color-text-primary)]">
               Clear steps.
               <span className="block text-[var(--color-text-muted)]">
                 Exceptional execution.

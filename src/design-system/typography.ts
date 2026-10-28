@@ -25,7 +25,7 @@ export const typography = {
     "5xl": "3rem",
     "6xl": "3.75rem",
     "7xl": "4.5rem",
-    hero: "clamp(3.25rem, 9vw, 8.5rem)",
+    hero: "var(--text-hero-size)",
   },
 
   lineHeight: {
@@ -46,18 +46,18 @@ export const typography = {
   textStyles: {
     hero: {
       fontFamily: "var(--font-display)",
-      fontSize: "clamp(3.25rem, 9vw, 8.5rem)",
+      fontSize: "var(--text-hero-size)",
       fontWeight: 600,
-      lineHeight: 0.95,
-      letterSpacing: "-0.055em",
+      lineHeight: 0.99,
+      letterSpacing: "var(--text-hero-tracking)",
     },
 
     heading: {
       fontFamily: "var(--font-display)",
-      fontSize: "clamp(2.25rem, 5.5vw, 5rem)",
+      fontSize: "var(--text-heading-size)",
       fontWeight: 600,
       lineHeight: 1.05,
-      letterSpacing: "-0.04em",
+      letterSpacing: "var(--text-heading-tracking)",
     },
 
     body: {

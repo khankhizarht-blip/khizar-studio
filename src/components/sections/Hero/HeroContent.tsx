@@ -9,8 +9,8 @@ const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.14,
-      delayChildren: 0.08,
+      staggerChildren: motionSettings.stagger.relaxed,
+      delayChildren: motionSettings.delay.short,
     },
   },
 };
@@ -18,7 +18,7 @@ const containerVariants = {
 const itemVariants = {
   hidden: {
     opacity: 0,
-    y: 24,
+    y: motionSettings.distance.medium,
   },
   visible: {
     opacity: 1,
@@ -34,7 +34,7 @@ const headlineVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.14,
+      staggerChildren: motionSettings.stagger.relaxed,
     },
   },
 };
@@ -80,8 +80,8 @@ export default function HeroContent() {
       <motion.h1
         variants={headlineVariants}
         className="
-          mt-7 font-semibold leading-[0.99] tracking-[-0.055em]
-          text-[clamp(3rem,7.1vw,7rem)] text-[var(--color-text-primary)]
+          mt-7 font-semibold leading-[var(--text-hero-leading)] tracking-[var(--text-hero-tracking)]
+          text-[length:var(--text-hero-size)] text-[var(--color-text-primary)]
         "
       >
         <span className="block overflow-hidden pb-1">

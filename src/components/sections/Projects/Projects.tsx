@@ -150,7 +150,7 @@ export default function Projects() {
               Selected Work
             </span>
 
-            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-[var(--color-text-primary)] sm:mt-6 sm:text-5xl xl:text-6xl">
+            <h2 className="mt-5 text-[length:var(--text-section-size)] font-semibold leading-[var(--text-section-leading)] tracking-[var(--text-heading-tracking)] text-[var(--color-text-primary)]">
               Selected projects.
               <span className="block text-[var(--color-text-muted)]">
                 Designed for impact.

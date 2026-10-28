@@ -43,7 +43,12 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
+  --text-hero-size: clamp(3rem, 7.1vw, 7rem);
+  --text-hero-leading: 0.99;
+  --text-hero-tracking: -0.055em;
   --text-heading-size: clamp(2.25rem, 5.5vw, 5rem);
+  --text-section-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  --text-section-leading: 1.12;
   --text-heading-leading: 1.05;
   --text-heading-tracking: -0.04em;
   --text-eyebrow-tracking: 0.08em;

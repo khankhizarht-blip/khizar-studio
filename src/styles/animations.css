@@ -12,5 +12,5 @@
 
 
 .animate-fade-in {
-  animation: fade-in 0.8s ease forwards;
+  animation: fade-in var(--duration-reveal) var(--ease-premium) forwards;
 }

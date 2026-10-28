@@ -32,7 +32,7 @@ export default function Testimonials() {
             <p className="text-xs uppercase tracking-[var(--text-eyebrow-tracking)] text-[var(--color-text-muted)]">
               How I Work
             </p>
-            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-[var(--color-text-primary)] sm:text-5xl lg:text-6xl">
+            <h2 className="mt-5 text-[length:var(--text-section-size)] font-semibold leading-[var(--text-section-leading)] tracking-[var(--text-heading-tracking)] text-[var(--color-text-primary)]">
               Good work builds trust.
               <span className="block text-[var(--color-text-muted)]">
                 Great experiences keep it.

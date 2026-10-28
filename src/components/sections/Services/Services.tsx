@@ -83,7 +83,7 @@ export default function Services() {
             What We Do
           </p>
 
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight text-[var(--color-text-primary)] sm:text-5xl">
+          <h2 className="mt-4 text-[length:var(--text-section-size)] font-semibold leading-[var(--text-section-leading)] tracking-[var(--text-heading-tracking)] text-[var(--color-text-primary)]">
             More than a website.
             <br />
             A better way to grow.
