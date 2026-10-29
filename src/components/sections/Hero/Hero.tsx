@@ -10,6 +10,7 @@ import HeroContent from "./HeroContent";
 import HeroActions from "./HeroActions";
 import HeroStats from "./HeroStats";
 import BrowserShowcase from "./BrowserShowcase";
+import CinematicEnvironment from "@/components/background/CinematicEnvironment";
 
 export default function Hero() {
   const introRef = useRef<HTMLDivElement>(null);
@@ -60,6 +61,7 @@ export default function Hero() {
 
   return (
     <div className="relative isolate">
+      <CinematicEnvironment />
       <div ref={introRef} className="relative">
         <Section className="relative overflow-hidden pb-8 pt-32 sm:pt-36 lg:pt-40">
           <div
