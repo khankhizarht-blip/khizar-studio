@@ -12,17 +12,19 @@ import ProjectTech from "./ProjectTech";
 
 interface ProjectCardProps {
   project: Project;
+  reveal?: boolean;
   index: number;
 }
 
 export default function ProjectCard({
   project,
   index,
+  reveal = true,
 }: ProjectCardProps) {
   const caseStudyHref = `/projects/${project.id}`;
 
   return (
-    <Reveal>
+    <Reveal animated={reveal}>
       <motion.article
         initial="initial"
         whileHover="hover"

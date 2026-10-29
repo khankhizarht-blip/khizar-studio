@@ -393,6 +393,7 @@ export default function Projects() {
                       "
                     >
                       <ProjectCard
+                        reveal={false}
                         project={project}
                         index={index}
                       />

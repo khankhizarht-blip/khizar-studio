@@ -49,16 +49,6 @@ export default function Hero() {
               duration: 1,
             },
             0
-          )
-          .fromTo(
-            intro.querySelector("[data-hero-content]"),
-            { y: 0, opacity: 1 },
-            {
-              y: -35,
-              opacity: 0.85,
-              duration: 1,
-            },
-            0
           );
 
         return () => timeline.kill();

@@ -275,6 +275,7 @@ export default function Services() {
                   }}
                 >
                   <ServiceCard
+                    reveal={false}
                     service={service}
                     index={index}
                   />

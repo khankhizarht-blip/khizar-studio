@@ -13,6 +13,7 @@ import type { Service } from "@/types/service";
 
 interface ServiceCardProps {
   service: Service;
+  reveal?: boolean;
   index: number;
 }
 
@@ -25,12 +26,13 @@ const serviceIcons = {
 export default function ServiceCard({
   service,
   index,
+  reveal = true,
 }: ServiceCardProps) {
   const Icon =
     serviceIcons[service.icon as keyof typeof serviceIcons] ?? Code;
 
   return (
-    <Reveal>
+    <Reveal animated={reveal}>
       <article
         className="
           group

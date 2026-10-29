@@ -9,15 +9,17 @@ import type { ProcessStep as Step } from "@/types/process";
 
 interface ProcessStepProps {
   step: Step;
+  reveal?: boolean;
 }
 
 export default function ProcessStep({
   step,
+  reveal = true,
 }: ProcessStepProps) {
   const stepNumber = String(step.id).padStart(2, "0");
 
   return (
-    <Reveal>
+    <Reveal animated={reveal}>
       <motion.article
         initial="initial"
         whileHover="hover"

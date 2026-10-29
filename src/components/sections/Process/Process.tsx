@@ -286,7 +286,7 @@ export default function Process() {
                     className="pointer-events-none absolute -left-[17px] top-10 z-20 hidden h-3 w-3 rounded-full border-2 border-[var(--color-accent)] bg-[var(--color-background)] md:block lg:hidden"
                   />
 
-                  <ProcessStep step={step} />
+                  <ProcessStep step={step} reveal={false} />
 
                   <div className="mt-3 flex items-center justify-end gap-2 text-xs text-[var(--color-text-muted)]">
                     <span>
