@@ -164,3 +164,23 @@ The three compressed Puture clips are now the primary motion-design references. 
 Observed: persistent tile/grid environment, perimeter-to-center recomposition, dark-to-light exposure with retained objects, and project planes tipping into and away from a steadier presentation pose. Camera movement is an appearance inferred from relative movement, not verified implementation. Clip 03 continues the work gallery and clears into another atmosphere; it does not establish a final contact scene.
 
 Documentation-only update. Application source, dependencies, public assets, laptop contract, and horizontal gallery unchanged from f5d83ef. Protected latest-local hashes remain identical. Validate with git diff --check and a changed-file scope review; application checks are not rerun for unchanged source. Previous passing checks and the Google Fonts build failure remain the last application verification results. No push, deployment, main-branch change, or new visual scenes.
+
+
+## Phase 2 implementation and QA
+
+Checkpoint: checkpoint/pre-phase2-65753c6. Primitives commit 897f5e9. New Hero environment is a sibling decoration, with its architecture/changed-file list and usage recorded in cinematic-redesign-plan.md. Laptop GLB, LaptopScene, BrowserShowcase and all Projects files match 65753c6 byte-for-byte. No dependencies, additional pins, body-text controllers, or WebGL contexts added.
+
+Per-batch lint/TypeScript checks pass; node --test tests/motion-lifecycle.test.mjs passes. Production build attempts reproduce only the known next/font errors fetching Inter and Manrope; local dev page compiles and responds 200. git diff --check passes.
+
+Browser checks in installed headless Chromium:
+
+- Desktop 1440×1000: 4 displayed surfaces; 2 existing pin spacers. Scroll changes decorative transforms; they remain unchanged after settling (no idle transform loop).
+- Live reduced motion: surface shell transform reverts to none, remains static across scroll; 0 pin spacers as in the existing accessible fallback. Environment is aria-hidden/pointer-events none, contains no focusable elements or paragraphs/headings, and CTA center hit-test reaches the CTA.
+- Mobile 390×844: 2 surfaces, document width 390px, static decoration with either motion preference.
+- Keyboard Tab reaches the contact CTA, Enter navigates to #contact. Mobile menu opens above decoration and Escape closes it.
+- Two homepage/case-study cycles: 1 environment/2 pins on home, 0 environments/0 pins on case study; no invalid-scope warnings or uncaught page errors.
+- Fresh reduced-motion load: pre-existing hydration warning originates in unchanged Hero Motion initial style attributes. New scene markup is deterministic and shows no mismatched attributes in that trace. Existing Three.Clock deprecation and Chromium software-rendered WebGL readback warnings remain.
+
+Captures: desktop-hero.png, desktop-scroll.png, desktop-reduced-motion.png, mobile-hero.png under /workspace/work/phase2. Scripts and logs are session QA artifacts in that directory; desktop/mobile captures were displayed in chat. These tests do not establish Safari/Firefox, screen-reader, real-device performance, or production build success.
+
+No Phase 3 scene changes. Existing scrubbed Hero exit and About paragraph movement remain tracked for subsequent readability work, along with the existing hydration warning. Preview server stopped after verification; no push, deploy, or main modification.

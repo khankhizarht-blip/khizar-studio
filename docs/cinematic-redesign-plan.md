@@ -84,7 +84,7 @@ See local-source-and-reference-handoff.md for a Windows source ZIP procedure and
 
 ## Infrastructure review status
 
-Latest-local import and two repair batches are complete on the feature branch; see motion-audit.md for exact scope and checks. The laptop files and supplied ScrollStory remain unchanged. Horizontal Projects is retained for normal desktop motion, with a static reduced-motion alternative. No new cinematic composition has been implemented. The reference-study gate is now satisfied by the three compressed clips. This turn updates planning only; no shared visual environment or new scene code has begun. Existing continuous text motion and reduced-motion Hero hydration warnings remain explicitly tracked for follow-up.
+Latest-local import and two repair batches are complete on the feature branch; see motion-audit.md for exact scope and checks. The laptop files and supplied ScrollStory remain unchanged. Horizontal Projects is retained for normal desktop motion, with a static reduced-motion alternative. No new cinematic composition has been implemented. The reference-study gate is now satisfied by the three compressed clips. That reference-study turn changed planning only. Phase 2 delivery is recorded below; section redesign remains pending. Existing continuous text motion and reduced-motion Hero hydration warnings remain explicitly tracked for follow-up.
 
 
 ## Primary motion reference study — 29 October 2026
@@ -147,3 +147,46 @@ The next proposed batch is the shared visual environment only: extend motion tok
 Before accepting that batch: confirm distinct Khizar artwork, clean content/decorative separation, visible focus, contrast on navy and ivory, no new WebGL context or pin, static reduced-motion appearance, bounded mobile object count, and no layout shift. Keep the laptop's latest-local hashes unchanged. Then take Hero/laptop handoff, ScrollStory, and Services/Projects as separate reviewable batches with lint, TypeScript, build where possible, and runtime QA.
 
 For future scene acceptance: check both scroll directions, stop at phase boundaries, leave each description on screen long enough to read, inspect every project and activate its links without racing an exit, test keyboard focus and live reduced motion, verify short/zoomed/mobile viewports, and confirm no orphan triggers or pins after route changes. Resolve the tracked Hero hydration warning and continuous text movement in their affected batches. The existing Google Fonts build failure remains a separate verification limitation; this documentation update does not fix it.
+
+
+## Phase 2 delivered — shared cinematic environment
+
+Owner approved infrastructure repairs and authorized this phase after reference-study commit 65753c6. Pre-phase checkpoint: checkpoint/pre-phase2-65753c6. Work remains on feature/cinematic-motion-foundations; no main change, push, deployment, or Phase 3 work.
+
+### Files and responsibilities
+
+| File | Responsibility |
+| --- | --- |
+| src/components/background/ArchitecturalGrid.tsx | Original SVG bay grid with an off-center convergence point and architectural boundary rails. Stable React useId prevents gradient-ID collisions. |
+| src/components/background/AtmosphericLight.tsx | Champagne gradient light fields; no animated blur filters, images, or render loop. |
+| src/components/background/InterfaceSurface.tsx | Three reusable decorative surface variants: blueprint, layers, structure; layered CSS planes, rails, and panel geometry, no text or controls. |
+| src/components/background/SceneTransition.tsx | Local decorative boundary accepting from/to navy or ivory; prepares color continuity without wrapping/interpolating text. |
+| src/components/background/CinematicEnvironment.module.css | Palette composition, perspective surfaces, grid mask, lighting, boundary and viewport adaptations. |
+| src/components/background/CinematicEnvironment.tsx | Reusable scoped composition and single desktop scroll timeline; tone, transitionTo, animated props. |
+| src/design-system/motion.ts | Additive cinematicMotion tokens for linear scroll progress, scrub, span, bounded travel/rotation, and future entrance/hold/exit proportions. Existing presets unchanged. |
+| src/styles/variables.css | Additive scene palette/perspective variables. Existing semantic text and background tokens unchanged. |
+| src/components/sections/Hero/Hero.tsx | Adds only the import and decorative sibling instance; existing Hero/laptop controllers and DOM content remain intact. |
+
+### Usage and ownership
+
+Place CinematicEnvironment inside a positioned/isolate section wrapper as a sibling behind the content. It is absolute, aria-hidden, pointer-events none, and contains no semantic information or focusable elements. Never put content inside this component. It does not transform its parent or modify the section's height. The Hero instance spans the existing wrapper; its masked 1250px field provides a bounded opening atmosphere that blends into the existing laptop environment, not a new global background controller.
+
+Default props: tone="navy", transitionTo=tone, animated=true. A static instance uses animated=false. For future light sections use tone="ivory" and a matching settled semantic section theme. The environment's tone is decorative only: it deliberately does not change sibling text or navbar colors. SceneTransition prepares a background boundary; it is not yet the complete Services navy-to-ivory scene or a semantic theme switch.
+
+One GSAP timeline moves dedicated surface shells, grid shell, and lighting shell across 1.2 viewport heights with scrub .65 and ease none. Inner surfaces retain CSS perspective while outer shells own scroll transforms, avoiding competing property owners. The root/content/laptop are never transformed by this controller. No pin, state update per scroll, ticker callback, autonomous floating loop, new Canvas, observer, or dependency was added. Scope and matchMedia revert through the repaired useGSAP hook. Future compositions should reuse these primitives/tokens rather than adding global motion to the page background.
+
+Four surfaces are displayed on desktop, two below 1024px. Below 1024px and under reduced motion the environment is static and its GSAP timeline is not created. The same deterministic markup is server/client rendered; responsive presentation uses CSS rather than viewport-dependent hydration branches. Reduced-motion preference changes revert inline scroll transforms. Geometry stays peripheral and central grid visibility is masked to protect the existing reading area.
+
+### Verification and boundaries
+
+Both implementation batches passed lint and TypeScript checks; existing lifecycle tests pass. The production build was attempted after each batch and still exits 1 fetching Inter and Manrope from Google Fonts. The local dev compilation served successfully. This is not a successful production build and no font-source workaround was introduced.
+
+Headless Chromium checked 1440×1000 desktop, 390×844 mobile, live reduced-motion changes, Tab/Enter contact navigation, CTA hit testing, mobile menu/Escape, and two case-study route cycles. Four/two decorative surfaces, no horizontal mobile overflow, existing 2/0 normal/reduced pin counts, stable decorative transforms after scroll settles, static reduced/mobile compositions, and no invalid-scope or uncaught page errors were verified. Desktop, scroll, reduced-motion and mobile captures are retained in /workspace/work/phase2 and desktop/mobile captures were displayed in chat.
+
+Fresh reduced-motion loading still produces the previously documented hydration attribute warning in unchanged HeroContent/HeroActions/HeroStats Motion initial styles; no mismatch is shown in the environment subtree. Existing Three.Clock deprecation and software-WebGL screenshot readback warnings were observed. No new WebGL rendering was introduced, and these checks are not a device performance or cross-browser certification.
+
+Laptop GLB, LaptopScene, BrowserShowcase and the entire Projects directory are unchanged from 65753c6. Existing Hero text exit/blur and later section paragraph motion were not rewritten under this bounded phase; those remain Phase 3/later readability work. The new environment adds no text animation.
+
+### Remaining work and approval boundary
+
+Phase 3 is not started. After owner review, develop the Hero-to-laptop handoff and ScrollStory as separate batches, including the planned stable reading holds and the pre-existing Hero hydration issue. Future Services work must supply a complete accessible ivory semantic theme and navbar treatment before activating a light environment; keep the editorial rows and original assets. Reuse background motifs and primitives while preserving the laptop contract, Projects navigation, reduced motion, and scroll budget. Evaluate measured device cost before increasing geometry or considering additional WebGL.
