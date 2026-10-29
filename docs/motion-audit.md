@@ -225,3 +225,10 @@ Remaining warnings: existing Three.Clock deprecation and software-WebGL ReadPixe
 ### Review boundary
 
 Batch A is ready for the owner's visual review. Batch B and Batch C are not started. Architecture and next steps are recorded in cinematic-redesign-plan.md. Stop the local preview server after capturing; do not push/deploy or change main.
+
+
+## Visual design reset — proposal only
+
+The owner paused Batch A refinements and Batch B to redesign compositions and choreography together. A new structural audit and seven-experience proposal are recorded in docs/visual-art-direction.md. Static desktop/mobile mockups, three capability transformation stills, and a 15-page storyboard were prepared outside the application repository. The proposal preserves existing data, links, navigation, the protected laptop and gallery functionality while changing visual composition. It is not an implemented animation or approved application change.
+
+Design-artifact QA: 20 desktop/mobile composition frames and three capabilities stills rendered; Manrope and Inter loaded; text-containment checks reported no overflows at the two storyboard widths; six solid text/background palette pairs exceed 4.5:1. These checks do not establish production responsiveness, animation quality, screen-reader support or runtime performance. Existing application tests/builds were not rerun on unchanged code. No source, dependency, model, route, push or deployment changes; only planning documentation is updated.

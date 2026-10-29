@@ -1,5 +1,7 @@
 # Cinematic redesign: approved architecture and delivery plan
 
+> **Current status — visual design reset:** Batch A refinements and Batch B implementation are paused. The owner requested a seven-experience art-direction proposal before any further application code. See [visual-art-direction.md](visual-art-direction.md). The new direction is proposed, not approved; earlier phase/batch plans below are historical context and must not trigger implementation automatically.
+
 Approved by the owner on 29 October 2026. This document records direction, not completed implementation.
 
 ## Source gate and current scope
