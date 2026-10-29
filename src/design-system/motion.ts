@@ -91,3 +91,13 @@ export const animationPresets = {
 export const reducedMotionTransition = {
   duration: 0,
 };
+
+
+/** Shared decorative choreography; never applies to semantic text. */
+export const cinematicMotion = {
+  scrub: 0.65,
+  scrollSpan: 1.2,
+  ease: "none",
+  phases: { entrance: 0.22, holdEnd: 0.75, exit: 1 },
+  travel: { grid: 55, light: 35, surface: 90, rotation: 7 },
+} as const;

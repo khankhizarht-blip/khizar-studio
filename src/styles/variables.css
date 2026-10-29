@@ -91,3 +91,16 @@ body {
     --duration-stagger: 0ms;
   }
 }
+
+/* Decorative scene palette: semantic foreground colors remain independent. */
+:root {
+  --scene-navy: #0b1018;
+  --scene-navy-surface: #101b29;
+  --scene-ivory: #eee9df;
+  --scene-ivory-surface: #f8f5ef;
+  --scene-gold-edge: rgb(214 183 128 / 28%);
+  --scene-gold-light: rgb(214 183 128 / 12%);
+  --scene-stone-edge: rgb(92 73 43 / 24%);
+  --scene-ivory-light: rgb(183 143 77 / 14%);
+  --scene-perspective: 1200px;
+}
