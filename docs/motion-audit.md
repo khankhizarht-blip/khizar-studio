@@ -151,3 +151,16 @@ The browser workflow scripts and command logs are retained in /workspace/work/kh
 ### Final scope-lifetime follow-up
 
 Console review after route QA exposed GSAP Invalid scope warnings during teardown because React clears ref.current before effect cleanup. useGSAP now captures the mounted scope element when creating its context, instead of retaining the mutable ref as the selector scope. Repeated the two normal-motion route cycles with an explicit Invalid scope console assertion: passed, no invalid-scope warnings and no uncaught page errors. Lint, TypeScript, lifecycle tests, and diff checks pass after this correction; production build remains blocked by the same Google Fonts downloads. Existing Hero hydration and Three.Clock warnings remain distinct from this corrected lifecycle issue.
+
+
+## Reference evidence received — 29 October 2026
+
+The three compressed Puture clips are now the primary motion-design references. Studied chronological frame sequences across all three clips at 0.25-second intervals and full-resolution spot checks. Findings, clip-relative timestamps, interpretation limits, original Khizar adaptations, and next-batch acceptance criteria are recorded in cinematic-redesign-plan.md. Earlier statements that actual reference motion was unavailable describe the historical audit; they no longer block reference-informed planning. The oversized original recording was not inspected.
+
+- puture_01_opening_3d.mp4: 12.00s, 1280×668, 24fps. SHA-256 51018ddaeac0cf11bc264f90c9afd542afdad958910daff86f3ab98ef7f0a6d8.
+- puture_02_light_projects.mp4: approximately 11.96s, 1280×668, 24fps. SHA-256 eed8fe6a159b02244b51135a7fac746a8abf33d0e797bb85c3c9eabee6c51d66.
+- puture_03_closing_scene.mp4: 12.00s, 1280×668, 24fps. SHA-256 f11c25630028d179ef543a344c21cabe9b7753bd21f1da45197a7d99021380df.
+
+Observed: persistent tile/grid environment, perimeter-to-center recomposition, dark-to-light exposure with retained objects, and project planes tipping into and away from a steadier presentation pose. Camera movement is an appearance inferred from relative movement, not verified implementation. Clip 03 continues the work gallery and clears into another atmosphere; it does not establish a final contact scene.
+
+Documentation-only update. Application source, dependencies, public assets, laptop contract, and horizontal gallery unchanged from f5d83ef. Protected latest-local hashes remain identical. Validate with git diff --check and a changed-file scope review; application checks are not rerun for unchanged source. Previous passing checks and the Google Fonts build failure remain the last application verification results. No push, deployment, main-branch change, or new visual scenes.
