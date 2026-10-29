@@ -10,6 +10,15 @@ import { projects } from "@/data/projects";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import useGSAP from "@/hooks/useGSAP";
 
+const SETTINGS = {
+  scrollSpeed: 1.3,
+  scrub: 0.85,
+  inactiveScale: 0.9,
+  inactiveOpacity: 0.72,
+  maximumRotation: 5,
+  maximumDepth: 90,
+};
+
 export default function Projects() {
   const pinRef = useRef<HTMLDivElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
@@ -18,7 +27,12 @@ export default function Projects() {
   const trackRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLSpanElement>(null);
-  const desktopTriggerRef = useRef<ScrollTrigger | null>(null);
+
+  const desktopTriggerRef = useRef<ScrollTrigger | null>(
+    null
+  );
+
+  const activeIndexRef = useRef(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const featuredProjects = projects.filter(
@@ -26,29 +40,50 @@ export default function Projects() {
   );
 
   const totalProjects = featuredProjects.length;
-  const formattedTotal = String(totalProjects).padStart(2, "0");
+  const formattedTotal = String(totalProjects).padStart(
+    2,
+    "0"
+  );
 
   const goToProject = (index: number) => {
     const trigger = desktopTriggerRef.current;
+
     if (!trigger || totalProjects < 2) return;
 
-    const safeIndex = Math.max(0, Math.min(totalProjects - 1, index));
-    const progress = safeIndex / (totalProjects - 1);
-    const scrollY = trigger.start + progress * (trigger.end - trigger.start);
+    const safeIndex = Math.max(
+      0,
+      Math.min(totalProjects - 1, index)
+    );
 
-    window.scrollTo({ top: scrollY, behavior: "smooth" });
+    const progress = safeIndex / (totalProjects - 1);
+
+    const scrollY =
+      trigger.start +
+      progress * (trigger.end - trigger.start);
+
+    window.scrollTo({
+      top: scrollY,
+      behavior: "smooth",
+    });
   };
 
-  const handleProjectFocus = (event: FocusEvent<HTMLDivElement>) => {
+  const handleProjectFocus = (
+    event: FocusEvent<HTMLDivElement>
+  ) => {
     if (window.innerWidth < 1024) return;
 
-    const card = (event.target as HTMLElement).closest<HTMLElement>(
-      "[data-project-index]"
-    );
+    const card = (
+      event.target as HTMLElement
+    ).closest<HTMLElement>("[data-project-index]");
+
     if (!card) return;
 
     const index = Number(card.dataset.projectIndex);
-    if (Number.isInteger(index) && index !== activeIndex) {
+
+    if (
+      Number.isInteger(index) &&
+      index !== activeIndexRef.current
+    ) {
       goToProject(index);
     }
   };
@@ -60,7 +95,7 @@ export default function Projects() {
       const gallery = galleryRef.current;
       const viewport = viewportRef.current;
       const track = trackRef.current;
-      const progress = progressRef.current;
+      const progressBar = progressRef.current;
       const counter = counterRef.current;
 
       if (
@@ -69,14 +104,19 @@ export default function Projects() {
         !gallery ||
         !viewport ||
         !track ||
-        !progress ||
+        !progressBar ||
         !counter
       ) {
         return;
       }
 
+      const cards = gsap.utils.toArray<HTMLElement>(
+        track.querySelectorAll("[data-project-index]")
+      );
+
       const media = gsap.matchMedia();
 
+      // Initial section entrance.
       media.add(
         "(prefers-reduced-motion: no-preference)",
         () => {
@@ -84,17 +124,17 @@ export default function Projects() {
             [intro, gallery],
             {
               autoAlpha: 0,
-              y: 24,
+              y: 34,
             },
             {
               autoAlpha: 1,
               y: 0,
-              duration: 0.85,
+              duration: 0.95,
               ease: "power3.out",
-              stagger: 0.12,
+              stagger: 0.15,
               scrollTrigger: {
                 trigger: pin,
-                start: "top 75%",
+                start: "top 78%",
                 once: true,
               },
             }
@@ -102,32 +142,115 @@ export default function Projects() {
         }
       );
 
+      // Desktop-only cinematic horizontal gallery.
       media.add(
         "(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
         () => {
           const getDistance = () =>
-            Math.max(0, track.scrollWidth - viewport.clientWidth);
+            Math.max(
+              0,
+              track.scrollWidth - viewport.clientWidth
+            );
 
-          const updateIndicators = (progressValue: number) => {
-            const activeProject =
-              totalProjects === 0
-                ? 0
-                : Math.min(
-                    totalProjects,
-                    Math.floor(progressValue * totalProjects) + 1
-                  );
+          const getScrollDistance = () =>
+            Math.max(
+              1,
+              getDistance() * SETTINGS.scrollSpeed
+            );
 
-            gsap.set(progress, {
-              scaleX: progressValue,
-            });
+          const setActiveProject = (index: number) => {
+            const safeIndex = Math.max(
+              0,
+              Math.min(totalProjects - 1, index)
+            );
 
             counter.textContent =
-              `${String(activeProject).padStart(2, "0")} / ${formattedTotal}`;
-            setActiveIndex(Math.max(0, activeProject - 1));
+              `${String(safeIndex + 1).padStart(2, "0")} / ${formattedTotal}`;
+
+            if (activeIndexRef.current !== safeIndex) {
+              activeIndexRef.current = safeIndex;
+              setActiveIndex(safeIndex);
+            }
           };
 
-          gsap.set(track, { x: 0 });
-          updateIndicators(0);
+          const updateDepth = () => {
+            const viewportWidth = viewport.clientWidth;
+
+            if (viewportWidth <= 0) return;
+
+            const viewportBounds =
+              viewport.getBoundingClientRect();
+
+            const viewportCenter =
+              viewportBounds.left + viewportWidth / 2;
+
+            let closestIndex = 0;
+            let closestDistance = Infinity;
+
+            cards.forEach((card, index) => {
+              const bounds = card.getBoundingClientRect();
+
+              const cardCenter =
+                bounds.left + bounds.width / 2;
+
+              const difference =
+                cardCenter - viewportCenter;
+
+              const distance = Math.abs(difference);
+
+              if (distance < closestDistance) {
+                closestDistance = distance;
+                closestIndex = index;
+              }
+
+              const normalizedDistance = Math.min(
+                1,
+                distance / viewportWidth
+              );
+
+              const scale =
+                1 -
+                (1 - SETTINGS.inactiveScale) *
+                  normalizedDistance;
+
+              const opacity =
+                1 -
+                (1 - SETTINGS.inactiveOpacity) *
+                  normalizedDistance;
+
+              const rotateY =
+                -THREE_LIKE_CLAMP(
+                  difference / viewportWidth,
+                  -1,
+                  1
+                ) * SETTINGS.maximumRotation;
+
+              const depth =
+                -normalizedDistance *
+                SETTINGS.maximumDepth;
+
+              gsap.set(card, {
+                scale,
+                opacity,
+                rotationY: rotateY,
+                z: depth,
+                transformPerspective: 1400,
+                transformOrigin: "center center",
+              });
+            });
+
+            setActiveProject(closestIndex);
+          };
+
+          gsap.set(track, {
+            x: 0,
+            force3D: true,
+          });
+
+          gsap.set(cards, {
+            transformPerspective: 1400,
+            transformOrigin: "center center",
+          });
 
           const tween = gsap.to(track, {
             x: () => -getDistance(),
@@ -135,23 +258,58 @@ export default function Projects() {
             scrollTrigger: {
               trigger: pin,
               start: "top top",
-              end: () => `+=${Math.max(1, getDistance())}`,
-              pin,
-              scrub: 1,
+              end: () => `+=${getScrollDistance()}`,
+              pin: true,
+              scrub: SETTINGS.scrub,
               anticipatePin: 1,
               invalidateOnRefresh: true,
-              onUpdate: (self) => {
-                updateIndicators(self.progress);
+
+              onUpdate(self) {
+                gsap.set(progressBar, {
+                  scaleX: self.progress,
+                  transformOrigin: "left center",
+                });
+
+                updateDepth();
               },
-              onRefresh: (self) => {
-                updateIndicators(self.progress);
+
+              onRefresh(self) {
+                gsap.set(progressBar, {
+                  scaleX: self.progress,
+                  transformOrigin: "left center",
+                });
+
+                updateDepth();
               },
             },
           });
 
-          desktopTriggerRef.current = tween.scrollTrigger ?? null;
+          desktopTriggerRef.current =
+            tween.scrollTrigger ?? null;
+
+          // Update perspective after the horizontal tween
+          // has rendered its new position.
+          const updateAfterRender = () => {
+            updateDepth();
+          };
+
+          gsap.ticker.add(updateAfterRender);
+
           return () => {
+            gsap.ticker.remove(updateAfterRender);
             desktopTriggerRef.current = null;
+
+            tween.scrollTrigger?.kill();
+            tween.kill();
+
+            gsap.set(cards, {
+              clearProps:
+                "transform,opacity,transformPerspective,transformOrigin",
+            });
+
+            gsap.set(track, {
+              clearProps: "transform",
+            });
           };
         }
       );
@@ -196,8 +354,9 @@ export default function Projects() {
             </h2>
 
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-[var(--color-text-secondary)] sm:mt-6 sm:text-lg">
-              A closer look at concept websites created to showcase clear
-              storytelling, refined interfaces, and thoughtful development.
+              A closer look at concept websites created
+              to showcase clear storytelling, refined
+              interfaces, and thoughtful development.
             </p>
           </div>
         </div>
@@ -210,6 +369,9 @@ export default function Projects() {
             <div
               ref={viewportRef}
               className="overflow-hidden"
+              style={{
+                perspective: "1400px",
+              }}
             >
               <div
                 ref={trackRef}
@@ -219,22 +381,24 @@ export default function Projects() {
                   lg:w-max lg:flex-row lg:gap-8
                 "
               >
-                {featuredProjects.map((project, index) => (
-                  <div
-                    key={project.id}
-                    data-project-index={index}
-                    className="
-                      w-full
-                      lg:w-[78vw] lg:max-w-[1040px]
-                      lg:min-w-[760px] lg:shrink-0
-                    "
-                  >
-                    <ProjectCard
-                      project={project}
-                      index={index}
-                    />
-                  </div>
-                ))}
+                {featuredProjects.map(
+                  (project, index) => (
+                    <div
+                      key={project.id}
+                      data-project-index={index}
+                      className="
+                        w-full
+                        lg:w-[78vw] lg:max-w-[1040px]
+                        lg:min-w-[760px] lg:shrink-0
+                      "
+                    >
+                      <ProjectCard
+                        project={project}
+                        index={index}
+                      />
+                    </div>
+                  )
+                )}
               </div>
             </div>
 
@@ -256,31 +420,47 @@ export default function Projects() {
               <span
                 ref={counterRef}
                 aria-label="Current project and total projects"
-                className="shrink-0 text-xs tabular-nums text-[var(--color-text-muted)]"
                 aria-live="off"
+                className="shrink-0 text-xs tabular-nums text-[var(--color-text-muted)]"
               >
                 01 / {formattedTotal}
               </span>
 
               {totalProjects > 1 && (
-                <div className="flex shrink-0 gap-2" aria-label="Project navigation">
+                <div
+                  className="flex shrink-0 gap-2"
+                  aria-label="Project navigation"
+                >
                   <button
                     type="button"
-                    onClick={() => goToProject(activeIndex - 1)}
+                    onClick={() =>
+                      goToProject(activeIndex - 1)
+                    }
                     disabled={activeIndex === 0}
                     aria-label="Previous project"
                     className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border-strong)] text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-background-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-35"
                   >
-                    <ArrowLeft size={18} aria-hidden="true" />
+                    <ArrowLeft
+                      size={18}
+                      aria-hidden="true"
+                    />
                   </button>
+
                   <button
                     type="button"
-                    onClick={() => goToProject(activeIndex + 1)}
-                    disabled={activeIndex === totalProjects - 1}
+                    onClick={() =>
+                      goToProject(activeIndex + 1)
+                    }
+                    disabled={
+                      activeIndex === totalProjects - 1
+                    }
                     aria-label="Next project"
                     className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border-strong)] text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-background-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-35"
                   >
-                    <ArrowRight size={18} aria-hidden="true" />
+                    <ArrowRight
+                      size={18}
+                      aria-hidden="true"
+                    />
                   </button>
                 </div>
               )}
@@ -290,4 +470,12 @@ export default function Projects() {
       </div>
     </section>
   );
+}
+
+function THREE_LIKE_CLAMP(
+  value: number,
+  min: number,
+  max: number
+) {
+  return Math.max(min, Math.min(max, value));
 }
