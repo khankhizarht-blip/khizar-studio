@@ -1,0 +1,96 @@
+[
+  {
+    "id": "hero",
+    "title": "01A \u00b7 The architectural opening",
+    "n": "01",
+    "cls": "hero",
+    "height": 1000,
+    "mheight": 1200,
+    "note": "Arrival holds. The architecture changes depth around a fixed reading rail; the central aperture becomes the laptop stage. Mobile places one simplified aperture below the CTA."
+  },
+  {
+    "id": "laptop",
+    "title": "01B \u00b7 A stage for the existing laptop",
+    "n": "01",
+    "cls": "laptop",
+    "height": 1000,
+    "mheight": 1050,
+    "note": "The protected laptop remains the focal object. Surrounding rails settle at its opening, zoom and inspection stages. The pictured laptop is an unaltered screenshot crop of the existing model, not a replacement asset. Mobile uses the existing browser fallback."
+  },
+  {
+    "id": "capabilities",
+    "title": "02A \u00b7 One object, three transformations",
+    "n": "02",
+    "cls": "capabilities",
+    "height": 1050,
+    "mheight": 1400,
+    "note": "One set of interface planes aligns, connects into structural rails, then resolves into a completed interface. Labels and short descriptions stay settled; they are not attached to moving planes. The terminal rail becomes the service dividers."
+  },
+  {
+    "id": "services",
+    "title": "02B \u00b7 Warm ivory, editorial services",
+    "n": "02",
+    "tone": "light",
+    "cls": "services",
+    "height": 1240,
+    "mheight": 1850,
+    "note": "Navy passes through warm stone into ivory while the same guide line remains. Text appears only on the settled surface. Three service rows retain every description and feature; there is no flying-card carousel or extra pin."
+  },
+  {
+    "id": "projects",
+    "title": "03A \u00b7 The website becomes the object",
+    "n": "03",
+    "tone": "light",
+    "cls": "projects",
+    "height": 1240,
+    "mheight": 1160,
+    "note": "Actual existing project imagery, uncropped and undistorted. A shallow entry tilt settles near front-on for inspection. Copy, concept disclosure, progress, arrows and case-study links remain accessible. These are two states of one showcase, not two new sections."
+  },
+  {
+    "id": "projects-creative",
+    "title": "03B \u00b7 The website becomes the object",
+    "n": "03",
+    "tone": "light",
+    "cls": "projects",
+    "height": 1240,
+    "mheight": 1160,
+    "note": "Actual existing project imagery, uncropped and undistorted. A shallow entry tilt settles near front-on for inspection. Copy, concept disclosure, progress, arrows and case-study links remain accessible. These are two states of one showcase, not two new sections."
+  },
+  {
+    "id": "about",
+    "title": "04 \u00b7 An editorial studio, not another card grid",
+    "n": "04",
+    "cls": "about",
+    "height": 1100,
+    "mheight": 1500,
+    "note": "The project ground line carries into a navy reading environment. Copy stays in normal flow. A shared gold axis connects the three values; only its marker and ambient light respond to scroll."
+  },
+  {
+    "id": "process",
+    "title": "05 \u00b7 A connected path with stable descriptions",
+    "n": "05",
+    "cls": "process",
+    "height": 1100,
+    "mheight": 1800,
+    "note": "Four steps share one continuous route instead of four animated containers. A marker advances along it; every description is available without waiting for its turn. On mobile the same route becomes a vertical spine. No pin."
+  },
+  {
+    "id": "principles",
+    "title": "06 \u00b7 A deliberate pause for reading",
+    "n": "06",
+    "tone": "light",
+    "cls": "principles",
+    "height": 1160,
+    "mheight": 1600,
+    "note": "Warm ivory removes spectacle from decision-making content. Fine rules connect principles and FAQ; text remains still. The accordion keeps keyboard activation and expanded-state semantics. All answers remain in the source and accessible on expansion."
+  },
+  {
+    "id": "contact",
+    "title": "07 \u00b7 The aperture returns, the CTA stays ready",
+    "n": "07",
+    "cls": "contact",
+    "height": 1150,
+    "mheight": 1500,
+    "note": "The opening architecture resolves into one quiet frame behind a stable final invitation. Email and project CTA are usable immediately; convergence never gates contact. Footer belongs to the same composition rather than another isolated card."
+  }
+]
