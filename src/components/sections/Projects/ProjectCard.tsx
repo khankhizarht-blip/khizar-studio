@@ -4,7 +4,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 import type { Project } from "@/types/project";
 import Reveal from "@/components/animations/Reveal";
@@ -21,13 +21,14 @@ export default function ProjectCard({
   index,
   reveal = true,
 }: ProjectCardProps) {
+  const reduceMotion = useReducedMotion();
   const caseStudyHref = `/projects/${project.id}`;
 
   return (
     <Reveal animated={reveal}>
       <motion.article
         initial="initial"
-        whileHover="hover"
+        whileHover={reduceMotion ? undefined : "hover"}
         className="
           group relative grid grid-cols-1 overflow-hidden
           rounded-[var(--radius-extra-large)] border border-[var(--color-border)]

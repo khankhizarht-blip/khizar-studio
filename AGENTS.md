@@ -1,6 +1,6 @@
 <!-- BEGIN:nextjs-agent-rules -->
 
-# This is NOT the Next.js you know
+## This is NOT the Next.js you know
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 
@@ -12,7 +12,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 Read `docs/cinematic-redesign-plan.md` and `docs/motion-audit.md` before motion work. Preserve all existing instructions above.
 
-- Verify the owner's latest local source before application edits. The d90e862 cloud snapshot has not been reconciled with the owner's newer local animation work. Do not treat a clean checkout as freshness verification.
+- Verify the owner's latest local source before application edits. The latest local ZIP supplied from owner-reported dd1b0a1 was imported at 0844b82 and preserved as checkpoint/local-dd1b0a1-import. Use that checkpoint rather than the older d90e862 snapshot; reverify freshness for future uploads. Do not treat a clean checkout as freshness verification.
 - Work on the feature branch in small batches and preserve a checkpoint of the verified source. Do not modify main, push, deploy, or alter live infrastructure without explicit approval.
 - During infrastructure repairs preserve the laptop GLB, opening sequence, camera, screen alignment, and scroll-progress contract. Record hashes before and after.
 - Maintain one animation owner per property and predictable GSAP cleanup. Support reduced motion with fully readable, reachable static content.

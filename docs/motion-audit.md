@@ -77,3 +77,72 @@ Phase 1 commands on unchanged source:
 ## Repair evidence required
 
 For each batch record source checkpoint, changed files, exact check results, preserved laptop hashes, runtime observations, and remaining risks. Verify trigger cleanup through repeated route visits/remounts, no duplicate property ownership, static reduced-motion content at desktop/mobile widths, all project links reachable, stable reading text, live preference changes, and no stale pin spacers after resize. Only then proceed to the shared environment after owner review.
+
+
+## Latest local source reconciliation — 29 October 2026
+
+The owner supplied `khizar studio live.zip` and reported local commit `dd1b0a1c646f4ee9353e66304414d69b359ba174` (Checkpoint before cinematic redesign). The archive has no Git history; the commit identity is reported, while its file contents were verified directly.
+
+ZIP SHA-256: `df9f5eed5a87e3a11f87353887715d754a3c5ccb20bed86a4d1d3e634230dfd8`.
+
+Imported at `0844b82`; checkpoint branch `checkpoint/local-dd1b0a1-import`. Original d90e862 checkpoint and 5d62016 approved documentation remain intact. No tracked project files were absent from the ZIP (excluding new cloud docs). The source checkpoint matches 137 supplied files byte-for-byte; AGENTS.md was merged to retain approved guidance, and next-env.d.ts remains ignored/generated. The intact archive and extracted source are retained under workspace attachments/work.
+
+Substantive local updates retained: HeroContent, HeroActions, ScrollStory, Services, Projects, About, Process, Testimonials, FAQ, and Contact. Another 59 differences were CRLF/LF only, including LaptopScene. Dependency inputs, GLB, and BrowserShowcase are unchanged. No older section implementation was substituted.
+
+### Revised findings against the latest source
+
+- ScrollStory already fixes its desktop reduced-motion fallback. Retained its new choreography, counter, and +=290% pin unchanged. Earlier overlapping-fallback and timing findings describe d90e862, not this imported version.
+- Projects adds depth, nearest-card detection, scroll multiplier 1.3, and scrub .85. Retained these settings and gallery content/navigation.
+- Services and Process have new parent-controlled entrances alongside existing nested Reveal wrappers. Disabled only the redundant child reveals; kept wrappers and parent timelines.
+- HeroContent adds an exit on the shared text group, competing with the older Hero.tsx timeline on the same group. Removed the older content tween and retained the latest exit; circle remains animated.
+- New About paragraphs still have continuous scrubbed movement. Other imported text-bearing scenes also use scrubbed entrances. These are retained local choreography, not new motion added by this repair. Their readability needs explicit visual review before redesign; this batch does not claim full readability QA.
+
+### Protected latest-local hashes
+
+```text
+a5a150faf7cef1c73db3b074370487c467e1419de6493926ddb6c3d9bf0a1955  public/models/khizar-laptop-summit.glb
+9abb42e1ec1f0284650ffb56ee666cd449cceb0617541a245cea2fde2d85081b  src/components/sections/Hero/LaptopScene.tsx
+3c1f0cb04c80b24c2d7f29e102ba3538ee2f86d96b1dc883325db0d21e4cfd24  src/components/sections/Hero/BrowserShowcase.tsx
+```
+
+LaptopScene's different hash versus Phase 1 is exclusively its supplied CRLF line endings. All three files match the ZIP and imported checkpoint after repairs. Opening, clip, camera, screen alignment, and progress ranges were not edited.
+
+### Repair batch 1 — 606b68e
+
+- useGSAP now creates a scoped GSAP context and reverts it on teardown, including callback-returned cleanup.
+- Reveal uses matchMedia to disable JS animation for reduced motion and revert on live changes. Added an opt-out preserving the original wrapper/standalone default.
+- Services, Projects, and Process opt out of redundant child reveals while retaining their updated section controllers.
+- Removed the older Hero content-group tween competing with the newer HeroContent controller.
+- Lenis now responds to live preference changes and removes its ticker callback/destroys its instance when reduced motion is enabled.
+- Added Node regression checks exercising the actual hook effect against real GSAP: restored state, caller cleanup, and no accumulated animations after repeated setup/teardown. These isolate the effect contract; they are not a React/browser integration test.
+
+Import baseline and batch 1: lint and TypeScript pass; production build fails fetching Inter and Manrope from Google Fonts, as before. Lifecycle checks pass.
+
+### Repair batch 2
+
+- Projects retains horizontal pinning for desktop/no-preference, with a vertical, unclipped list and hidden scroll controls for reduced motion.
+- Depth updates follow the horizontal tween, including scrub catch-up, instead of running continuously on a ticker. Layout coordinates avoid using perspective-transformed bounds as feedback. Nearest-card state, arrows, links, and indicators remain.
+- Gallery uses overflow-clip to prevent native horizontal focus scrolling from competing with the transformed track. Browser testing exposed this focus issue with overflow-hidden.
+- Process and working-principles selector strings are scoped to their own mounted sections.
+- Project and Process Motion hover variants are disabled for reduced motion; existing normal hover effects remain.
+
+Lint, TypeScript, and lifecycle regression checks pass. Production build still fails fetching the two Google Fonts. Browser results are recorded below after completion. No visual redesign, new dependencies, push, or deployment.
+
+
+### Browser verification and remaining limits
+
+Used installed headless Chromium with the local Next.js development server. Checks passed:
+
+- Desktop reduced motion at 1440×1000: both project wrappers have opacity 1, remain within the viewport, form a vertical column, and have no track transform; horizontal controls are hidden. ScrollStory's cinematic scene is hidden in favor of its supplied static fallback. No pin spacers remain.
+- Normal desktop: two expected GSAP pin spacers; Next moves the gallery track to -976px, Previous becomes enabled, and focusing the second project brings its link fully into view (approximately x=833–1018).
+- Live preference change to reduced motion restores the vertical layout and removes pin spacers.
+- Case-study route returns to the homepage correctly; reduced-motion headline lines all compute to opacity 1.
+- Mobile reduced motion at 390×844: vertical projects and document width equal to viewport width (390px), with no horizontal page overflow.
+- Two normal-motion homepage → Summit case study → homepage cycles: spacers go from 2 to 0 to 2 each cycle; no accumulating visible pin spacers.
+- Successful browser runs recorded no uncaught page errors. These checks are not a comprehensive cross-browser, screen-reader, performance, or full-site visual audit.
+
+The development console reports a hydration attribute warning in existing Hero Motion markup when reduced motion differs between server and client initial rendering, plus a Three.Clock deprecation warning. Tested headline content is visible, but these warnings remain unresolved; no claim of a warning-free runtime. Existing continuous paragraph motion (notably About) still needs the approved readability review. Cinematic scene design remains paused for actual reference clips.
+
+Final batch checks: npm run lint exit 0; npx tsc --noEmit exit 0; node --test tests/motion-lifecycle.test.mjs exit 0; git diff --check exit 0. npm run build exits 1 fetching Inter and Manrope, matching import baseline and every repair batch. No font source workaround or dependency changes were made.
+
+The browser workflow scripts and command logs are retained in /workspace/work/khizar-audit for this session. Preview server is stopped after QA. No push, deployment, main-branch modification, or shared visual environment work performed.

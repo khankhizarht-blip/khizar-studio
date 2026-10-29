@@ -178,20 +178,17 @@ export default function Projects() {
 
             if (viewportWidth <= 0) return;
 
-            const viewportBounds =
-              viewport.getBoundingClientRect();
-
-            const viewportCenter =
-              viewportBounds.left + viewportWidth / 2;
+            // Read layout coordinates, not the card's already transformed
+            // bounds, so perspective cannot feed back into its own input.
+            const viewportCenter = viewportWidth / 2;
+            const trackX = Number(gsap.getProperty(track, "x"));
 
             let closestIndex = 0;
             let closestDistance = Infinity;
 
             cards.forEach((card, index) => {
-              const bounds = card.getBoundingClientRect();
-
               const cardCenter =
-                bounds.left + bounds.width / 2;
+                card.offsetLeft + card.offsetWidth / 2 + trackX;
 
               const difference =
                 cardCenter - viewportCenter;
@@ -255,6 +252,8 @@ export default function Projects() {
           const tween = gsap.to(track, {
             x: () => -getDistance(),
             ease: "none",
+            // Runs through scrub catch-up frames, then stops with the tween.
+            onUpdate: updateDepth,
             scrollTrigger: {
               trigger: pin,
               start: "top top",
@@ -270,7 +269,6 @@ export default function Projects() {
                   transformOrigin: "left center",
                 });
 
-                updateDepth();
               },
 
               onRefresh(self) {
@@ -287,16 +285,7 @@ export default function Projects() {
           desktopTriggerRef.current =
             tween.scrollTrigger ?? null;
 
-          // Update perspective after the horizontal tween
-          // has rendered its new position.
-          const updateAfterRender = () => {
-            updateDepth();
-          };
-
-          gsap.ticker.add(updateAfterRender);
-
           return () => {
-            gsap.ticker.remove(updateAfterRender);
             desktopTriggerRef.current = null;
 
             tween.scrollTrigger?.kill();
@@ -333,8 +322,8 @@ export default function Projects() {
         className="
           flex min-h-screen flex-col justify-center
           py-20 sm:py-24
-          lg:h-screen lg:min-h-[700px]
-          lg:overflow-hidden lg:py-12
+          motion-safe:lg:h-screen motion-safe:lg:min-h-[700px]
+          motion-safe:lg:overflow-hidden lg:py-12
         "
       >
         <div
@@ -368,7 +357,7 @@ export default function Projects() {
           <div className="mx-auto max-w-[var(--container-max)] px-[var(--page-gutter)]">
             <div
               ref={viewportRef}
-              className="overflow-hidden"
+              className="overflow-clip"
               style={{
                 perspective: "1400px",
               }}
@@ -378,7 +367,7 @@ export default function Projects() {
                 onFocusCapture={handleProjectFocus}
                 className="
                   flex flex-col gap-6
-                  lg:w-max lg:flex-row lg:gap-8
+                  motion-safe:lg:w-max motion-safe:lg:flex-row lg:gap-8
                 "
               >
                 {featuredProjects.map(
@@ -388,8 +377,8 @@ export default function Projects() {
                       data-project-index={index}
                       className="
                         w-full
-                        lg:w-[78vw] lg:max-w-[1040px]
-                        lg:min-w-[760px] lg:shrink-0
+                        motion-safe:lg:w-[78vw] motion-safe:lg:max-w-[1040px]
+                        motion-safe:lg:min-w-[760px] motion-safe:lg:shrink-0
                       "
                     >
                       <ProjectCard
@@ -403,7 +392,7 @@ export default function Projects() {
               </div>
             </div>
 
-            <div className="mt-6 hidden items-center gap-5 lg:flex">
+            <div className="mt-6 hidden items-center gap-5 motion-safe:lg:flex">
               <span className="shrink-0 text-[10px] uppercase tracking-[0.25em] text-[var(--color-text-muted)]">
                 Scroll to explore
               </span>

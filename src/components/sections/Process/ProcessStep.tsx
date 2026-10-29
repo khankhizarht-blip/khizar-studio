@@ -2,7 +2,7 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 import Reveal from "@/components/animations/Reveal";
 import type { ProcessStep as Step } from "@/types/process";
@@ -16,13 +16,14 @@ export default function ProcessStep({
   step,
   reveal = true,
 }: ProcessStepProps) {
+  const reduceMotion = useReducedMotion();
   const stepNumber = String(step.id).padStart(2, "0");
 
   return (
     <Reveal animated={reveal}>
       <motion.article
         initial="initial"
-        whileHover="hover"
+        whileHover={reduceMotion ? undefined : "hover"}
         className="
           group
           relative

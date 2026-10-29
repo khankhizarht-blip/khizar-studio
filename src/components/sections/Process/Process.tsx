@@ -29,7 +29,7 @@ export default function Process() {
 
     initGSAP();
 
-    const media = gsap.matchMedia();
+    const media = gsap.matchMedia(section);
 
     media.add(
       "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
