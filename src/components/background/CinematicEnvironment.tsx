@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, type RefObject } from "react";
 import { gsap } from "@/lib/gsap";
 import useGSAP from "@/hooks/useGSAP";
 import { cinematicMotion } from "@/design-system/motion";
@@ -14,6 +14,8 @@ interface CinematicEnvironmentProps {
   tone?: EnvironmentTone;
   transitionTo?: EnvironmentTone;
   animated?: boolean;
+  environmentRef?: RefObject<HTMLDivElement | null>;
+  layout?: "bounded" | "opening";
 }
 
 /** Absolute sibling of content. Never put semantic content inside this layer. */
@@ -21,8 +23,11 @@ export default function CinematicEnvironment({
   tone = "navy",
   transitionTo = tone,
   animated = true,
+  environmentRef,
+  layout = "bounded",
 }: CinematicEnvironmentProps) {
-  const rootRef = useRef<HTMLDivElement>(null);
+  const localRef = useRef<HTMLDivElement>(null);
+  const rootRef = environmentRef ?? localRef;
 
   useGSAP(() => {
     const root = rootRef.current;
@@ -64,7 +69,7 @@ export default function CinematicEnvironment({
   }, rootRef, [animated]);
 
   return (
-    <div ref={rootRef} className={styles.environment} data-tone={tone} data-cinematic-environment aria-hidden="true">
+    <div ref={rootRef} className={styles.environment} data-tone={tone} data-layout={layout} data-cinematic-environment aria-hidden="true">
       <div className={styles.field}>
         <div data-scene-light className={styles.lightLayer}><AtmosphericLight /></div>
         <div data-scene-grid className={styles.gridLayer}><ArchitecturalGrid /></div>

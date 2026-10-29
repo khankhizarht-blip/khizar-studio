@@ -190,3 +190,35 @@ Laptop GLB, LaptopScene, BrowserShowcase and the entire Projects directory are u
 ### Remaining work and approval boundary
 
 Phase 3 is not started. After owner review, develop the Hero-to-laptop handoff and ScrollStory as separate batches, including the planned stable reading holds and the pre-existing Hero hydration issue. Future Services work must supply a complete accessible ivory semantic theme and navbar treatment before activating a light environment; keep the editorial rows and original assets. Reuse background motifs and primitives while preserving the laptop contract, Projects navigation, reduced motion, and scroll budget. Evaluate measured device cost before increasing geometry or considering additional WebGL.
+
+
+## Phase 3 — Batch A: Hero spatial choreography
+
+The owner approved Phase 2 and explicitly authorized Batch A only, followed by visual review before Batch B. Baseline: 15381ce; preserved as checkpoint/pre-phase3-a-15381ce on feature/cinematic-motion-foundations. Revisited all three supplied clips' chronological study sheets and their recorded analysis. No new reference uploads were needed.
+
+### Choreography
+
+- **Arrival:** retain the original copy, typography, actions, and layout. Headline, description, CTA and descriptive stats are now immediately available static HTML. Remove the text-exit blur/scale/opacity scrub and the older independent ring controller. Visual activity is assigned to the architectural environment, not words being read.
+- **Initial reading hold:** decorative pose is stationary through the first 18% of the natural Hero scroll interval. There is no new pinned prelude or added scroll spacer.
+- **Spatial passage:** layered surfaces advance in depth, turn, and move toward the periphery; the floor/grid opens and light shifts coherently. They then recede and align around the existing laptop footprint. The same surfaces persist rather than unrelated objects fading in.
+- **Laptop environment:** the same viewport-height decorative field remains sticky behind the existing laptop section. Surface depth, grid perspective and lighting follow its opening .03–.35, zoom .36–.55, turn .63–.84, and exit .87–1 boundaries. The model's controller, mesh, screen fit, camera and progress ref are untouched. The .55–.63 inspection interval holds decorative poses still.
+- **Review boundary:** the current ScrollStory remains intact. Its replacement and the complete laptop-to-ScrollStory handoff belong to Batches B/C. Do not describe this batch as the completed three-scene redesign.
+
+### Ownership and files
+
+HeroEnvironment.tsx composes Phase 2 CinematicEnvironment with animated=false, a shared environment ref, and an opt-in opening layout. The old bounded/ambient component remains usable without this layout. Its original ambient controller is disabled for this instance, so the same objects never receive two controllers.
+
+HeroEnvironment owns one GSAP scroll clock over the natural Hero-to-laptop distance, ending at laptop bottom/bottom. It calculates separate Hero and laptop normalized coordinates from cached dimensions on refresh. Pure openingPose() in src/lib/opening-motion.ts derives all decorative transforms from those coordinates, giving deterministic forward/reverse poses with no accumulated state. gsap.quickSetter applies cached CSS setters only when the clock renders; there are no custom ticker callbacks or React scroll state updates. Because quickSetter changes are not context-owned tween styles, cleanup restores each target's original style attribute explicitly. The existing scoped hook and matchMedia own controller teardown.
+
+The opening CSS field is sticky only at >=1024px with normal motion, inside an absolute background sibling; no transformed ancestor or additional wrapper is introduced around the Canvas. Existing section heights and model framing are preserved. Mobile/tablet and reduced-motion modes keep the established static two-surface composition and laptop fallback. Viewport refresh recalculates metrics rather than relying on a stale Hero/laptop timing ratio.
+
+Changed application files: background/CinematicEnvironment.tsx (external ref/layout API), its CSS module (opt-in sticky layout), Hero/HeroEnvironment.tsx (new controller), lib/opening-motion.ts (new pure poses), and Hero.tsx / HeroContent.tsx / HeroActions.tsx / HeroStats.tsx (composition and stable semantic content). HeroActions is now a single Link per action, removing the nested button and initial hover wrapper focus targets; explicit inline primary text color protects contrast from the existing global anchor-color rule. Tests/opening-motion.test.mjs covers stationary reading hold, continuity at the handoff, deterministic reverse poses, bounded geometry and the laptop inspection hold.
+
+Protected files: GLBs, LaptopScene.tsx, BrowserShowcase.tsx, ScrollStory, Projects, Services and every later section are unchanged from 15381ce. No dependencies, additional WebGL contexts or GSAP pins. The decorative sticky field adds no document height.
+
+### Batch A verification
+
+Lint, TypeScript, existing lifecycle tests and opening-pose regression tests pass. Production build again fails fetching Inter/Manrope via next/font; no code-build success is claimed. Local dev compilation serves successfully. Captures and browser results are recorded in motion-audit.md after verification. No pushes, deployments, main changes or Batch B implementation.
+
+
+Batch A browser results: forward/reverse poses, laptop stage progress, static text, mobile, live/fresh reduced motion, Tab/Enter CTA navigation, resize refresh, same-position reconstruction after reload, and route cleanup pass in Chromium. Prior Hero hydration warning is absent after removing its Motion initial/exit branches. Existing Three.Clock/software-WebGL capture warnings remain; production font downloads remain blocked. Nine sampled captures and a wheel-driven recording are session QA artifacts in /workspace/work/phase3-a. Batch A stops here for visual review; B/C are not implemented.

@@ -184,3 +184,44 @@ Browser checks in installed headless Chromium:
 Captures: desktop-hero.png, desktop-scroll.png, desktop-reduced-motion.png, mobile-hero.png under /workspace/work/phase2. Scripts and logs are session QA artifacts in that directory; desktop/mobile captures were displayed in chat. These tests do not establish Safari/Firefox, screen-reader, real-device performance, or production build success.
 
 No Phase 3 scene changes. Existing scrubbed Hero exit and About paragraph movement remain tracked for subsequent readability work, along with the existing hydration warning. Preview server stopped after verification; no push, deploy, or main modification.
+
+
+## Phase 3 Batch A — Hero spatial choreography and laptop environment
+
+Authorized scope: Batch A only, followed by visual review. Checkpoint: checkpoint/pre-phase3-a-15381ce. No ScrollStory rebuild, full three-scene handoff, later section work, push, deployment, or main changes.
+
+Revisited all three Puture study sheets and the primary-reference analysis. Used the principle of persistent geometry reorganizing around a stable reading area. Static Hero content replaces the old entrance/exit blur and text-group transform controller. CTA is a single semantic link (no nested button), with explicit dark foreground on champagne. Descriptive stats retain their copy and appearance without mount animation. This removes the previously observed reduced-motion Hero hydration mismatch; fresh reduced-motion browser testing recorded no hydration warnings.
+
+New HeroEnvironment composes the shared primitives in an opt-in sticky background layout. One decorative scroll clock spans natural Hero/laptop travel, reads cached geometry on refresh, and applies deterministic pure poses via quickSetter. Initial reading hold, forward passage, receding alignment and laptop-stage environmental adjustments share that clock. Saved inline styles are explicitly restored on cleanup. Ambient animation is disabled for this instance; no duplicate ownership, React per-frame state, custom ticker, extra WebGL or pin. Background stickiness adds no height or pin spacer.
+
+Protected comparison against 15381ce: both GLBs, LaptopScene.tsx, BrowserShowcase.tsx, ScrollStory, Projects, Services, About, Process, principles, FAQ and Contact have no differences. The three protected laptop SHA-256 hashes remain the latest-local hashes already recorded above. Camera, opening/hinge sequence, screen fit and scroll-progress ref are untouched.
+
+### Checks
+
+- npm run lint: exit 0.
+- npx tsc --noEmit: exit 0.
+- node --test tests/*.test.mjs: exit 0, both lifecycle and opening-motion test files pass. Pose checks exercise initial reading hold, continuity, reverse determinism, finite/bounded transforms and the laptop inspection hold. The initial continuity test's numeric-string parser was corrected to recursively read numbers rather than misreading scientific notation; no pose change was needed.
+- npm run build: exit 1 with the same next/font download failures for Inter and Manrope. No successful production build claimed; local dev page compiles and serves 200.
+- git diff --check: passed.
+
+### Browser and visual review
+
+Installed headless Chromium, 1440×1000 desktop, 1280×800 resized viewport and 390×844 mobile. Browser scripts, logs, nine stage captures and WebM recordings are retained as session QA artifacts in /workspace/work/phase3-a. Includes actual mouse-wheel/Lenis-driven movement as well as sampled stage captures. Desktop arrival, spatial passage, laptop handoff, opening, zoom, turn, exit, reduced motion and mobile were inspected visually. The CTA contrast correction was applied after first capture inspection; final arrival/mobile captures use dark CTA text.
+
+Passed:
+
+- Hero content computed transform none, opacity 1 and filter none across forward scrolling; immediate headline/description/CTA availability.
+- Decorative poses differ between forward stages and return to identical poses when reversing to prior positions.
+- The decorative field stays sticky at viewport top through laptop stages. The existing model is visibly closed/open/zoomed/turned as scroll progresses, and its existing progress bar tracks sampled .12/.40/.75/.96 positions within .02. This supplements the byte-level preservation check; it is not an independent mathematical revalidation of the GLB's animation tracks.
+- Reading/inspection holds are deterministic. Pure pose tests confirm the environment is stationary during laptop .56–.62; it does not add another long pre-laptop pin.
+- Live reduced motion restores undecorated shell transforms to none and static composition. Mobile width is 390px without document overflow. Existing laptop static fallback is preserved.
+- Fresh reduced-motion load has no Hero hydration warning, no invalid-scope warnings, and no uncaught page errors.
+- Real Tab navigation reaches the contact link and Enter navigates to #contact. CTA foreground computes to rgb(16,23,34); no nested button remains.
+- Resize refresh rebuilds geometry metrics and retains viewport alignment. Reload reconstructs the same physical-position pose within .001 tolerance after scrub settles. Browser automatic scroll retention varied between test runs (top vs retained offset), so no guarantee of cross-browser scroll-position retention is made and global restoration behavior was not changed.
+- Case-study navigation removes the environment and existing pin spacers; returning home creates exactly one environment and the two pre-existing pins. No GSAP invalid-scope warning or uncaught page error.
+
+Remaining warnings: existing Three.Clock deprecation and software-WebGL ReadPixels/screenshot stalls. No additional Canvas was introduced. Full Safari/Firefox, screen-reader and physical-device frame-time profiling remain unverified. The existing build font-network limitation remains. The complete laptop-to-ScrollStory scene connection is intentionally not implemented until Batches B/C are authorized.
+
+### Review boundary
+
+Batch A is ready for the owner's visual review. Batch B and Batch C are not started. Architecture and next steps are recorded in cinematic-redesign-plan.md. Stop the local preview server after capturing; do not push/deploy or change main.

@@ -119,3 +119,20 @@
 @media (prefers-reduced-motion: reduce) {
   .object { opacity: .35; }
 }
+
+/* Opening layout carries the same decorative viewport through the laptop.
+   This is a sibling background; the Canvas and its ancestors are untouched. */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .environment[data-layout="opening"] .field {
+    position: sticky;
+    inset: auto;
+    top: 0;
+    height: 100svh;
+    mask-image: linear-gradient(#000 0%, #000 88%, transparent 100%);
+  }
+  .environment[data-layout="opening"] .grid { height: 100%; }
+  .environment[data-layout="opening"] .object:nth-child(1) { top: 22%; }
+  .environment[data-layout="opening"] .object:nth-child(2) { top: 30%; }
+  .environment[data-layout="opening"] .object:nth-child(3) { top: 73%; }
+  .environment[data-layout="opening"] .object:nth-child(4) { top: 87%; }
+}
