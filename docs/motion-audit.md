@@ -146,3 +146,8 @@ The development console reports a hydration attribute warning in existing Hero M
 Final batch checks: npm run lint exit 0; npx tsc --noEmit exit 0; node --test tests/motion-lifecycle.test.mjs exit 0; git diff --check exit 0. npm run build exits 1 fetching Inter and Manrope, matching import baseline and every repair batch. No font source workaround or dependency changes were made.
 
 The browser workflow scripts and command logs are retained in /workspace/work/khizar-audit for this session. Preview server is stopped after QA. No push, deployment, main-branch modification, or shared visual environment work performed.
+
+
+### Final scope-lifetime follow-up
+
+Console review after route QA exposed GSAP Invalid scope warnings during teardown because React clears ref.current before effect cleanup. useGSAP now captures the mounted scope element when creating its context, instead of retaining the mutable ref as the selector scope. Repeated the two normal-motion route cycles with an explicit Invalid scope console assertion: passed, no invalid-scope warnings and no uncaught page errors. Lint, TypeScript, lifecycle tests, and diff checks pass after this correction; production build remains blocked by the same Google Fonts downloads. Existing Hero hydration and Three.Clock warnings remain distinct from this corrected lifecycle issue.

@@ -18,7 +18,9 @@ export default function useGSAP(
 
     // Context owns synchronous tweens, ScrollTriggers, and the cleanup
     // returned by the caller. Revert restores styles as well as killing work.
-    const context = gsap.context(() => callback(), scope);
+    // Capture the mounted element: React clears refs before effect cleanup.
+    // Keeping the ref itself would make GSAP resolve an invalid scope then.
+    const context = gsap.context(() => callback(), scope?.current ?? undefined);
 
     return () => context.revert();
     // eslint-disable-next-line react-hooks/exhaustive-deps
